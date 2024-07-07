@@ -140,8 +140,11 @@ body {
     .discover-button {
         padding: 15px;
         font-size: 1em;
-        transform: none; /* Отменяем вращение для мобильных устройств */
-        perspective: none; /* Отменяем перспективу для мобильных устройств */
+        transition: transform 400ms, background 400ms;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transform-style: preserve-3d;
+        transform: rotateX(15deg) rotateY(-20deg);
+        perspective: 500px;
     }
 
     .fullscreen-message {
