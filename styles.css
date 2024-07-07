@@ -6,6 +6,7 @@ body {
     margin: 0;
     background-color: #f0f2f5;
     font-family: Arial, sans-serif;
+    overflow: hidden; /* Запрещаем прокрутку контента */
 }
 
 .container {
@@ -137,6 +138,8 @@ body {
     .discover-button {
         padding: 15px;
         font-size: 1em;
+        transform: none; /* Отменяем вращение для мобильных устройств */
+        perspective: none; /* Отменяем перспективу для мобильных устройств */
     }
 
     .fullscreen-message {
