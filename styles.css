@@ -128,9 +128,8 @@ body {
 @media (max-width: 768px) {
     .input__container {
         padding: 15px;
-        transform-style: flat; /* Отменяем 3D визуализацию для мобильных устройств */
-        transform: none; /* Отменяем вращение для мобильных устройств */
-        perspective: none; /* Отменяем перспективу для мобильных устройств */
+        transform: none; /* Reset transformation for mobile */
+        perspective: none; /* Disable perspective for mobile */
     }
     
     .input__search {
