@@ -6,7 +6,7 @@ body {
     margin: 0;
     background-color: #f0f2f5;
     font-family: Arial, sans-serif;
-    overflow: hidden; /* Запрещаем прокрутку контента */
+    overflow: hidden; 
 }
 
 .container {
@@ -124,12 +124,9 @@ body {
     opacity: 1;
 }
 
-/* Media Query for Responsive Design */
 @media (max-width: 768px) {
     .input__container {
         padding: 15px;
-        transform: none; /* Reset transformation for mobile */
-        perspective: none; /* Disable perspective for mobile */
     }
     
     .input__search {
@@ -140,8 +137,6 @@ body {
     .discover-button {
         padding: 15px;
         font-size: 1em;
-        transform: none; /* Отменяем вращение для мобильных устройств */
-        perspective: none; /* Отменяем перспективу для мобильных устройств */
     }
 
     .fullscreen-message {
