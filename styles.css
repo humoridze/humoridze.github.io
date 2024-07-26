@@ -16,3 +16,18 @@ body {
 #pixelCanvas {
     border: 1px solid #000;
 }
+
+#colorPicker {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 200px;
+}
+
+#colorPicker button {
+    width: 20px;
+    height: 20px;
+    margin: 2px;
+    border: none;
+    cursor: pointer;
+}
