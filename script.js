@@ -1,40 +1,67 @@
-const canvas = document.getElementById('pixelCanvas');
-const context = canvas.getContext('2d');
-const pixelSize = 10;
-const colors = ['#000000', '#FFFFFF', '#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#00FFFF', '#FF00FF', '#800000', '#808000', '#008000', '#800080', '#008080', '#000080', '#808080', '#C0C0C0'];
-let currentColor = colors[0];
-let canPlacePixel = true;
+// script.js
+const codeContainer = document.getElementById("code-container");
+const codeElement = document.getElementById("code").querySelector('code');
+const content = document.getElementById("content");
 
-const colorPicker = document.getElementById('colorPicker');
-colors.forEach(color => {
-    const colorButton = document.createElement('button');
-    colorButton.style.backgroundColor = color;
-    colorButton.addEventListener('click', () => {
-        currentColor = color;
-    });
-    colorPicker.appendChild(colorButton);
-});
+const codeLines = [
+    "<!DOCTYPE html>",
+    "<html lang='ru'>",
+    "<head>",
+    "    <meta charset='UTF-8'>",
+    "    <meta name='viewport' content='width=device-width, initial-scale=1.0'>",
+    "    <title>титл епт</title>",
+    "    <link rel='stylesheet' href='styles.css'>",
+    "    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css'>",
+    "</head>",
+    "<body>",
+    "    <div id='code-container'>",
+    "        <pre id='code' class='language-html'><code></code></pre>",
+    "    </div>",
+    "    <div id='content' class='hidden'>",
+    "        <div class='content-inner'>",
+    "            <div class='logo'></div>",
+    "            <p class='description'>Лорем ипсум хуипсум</p>",
+    "            <div class='buttons'>",
+    "                <a href='https://t.me/legendagachimuchi' class='btn'>Telegram</a>",
+    "                <a href='https://github.com/humoridze' class='btn'>GitHub</a>",
+    "            </div>",
+    "        </div>",
+    "    </div>",
+    "    <script src='https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js'></script>",
+    "    <script src='script.js'></script>",
+    "</body>",
+    "</html>"
+];
 
-canvas.addEventListener('click', (event) => {
-    if (!canPlacePixel) return;
-    const rect = canvas.getBoundingClientRect();
-    const x = Math.floor((event.clientX - rect.left) / pixelSize) * pixelSize;
-    const y = Math.floor((event.clientY - rect.top) / pixelSize) * pixelSize;
-    context.fillStyle = currentColor;
-    context.fillRect(x, y, pixelSize, pixelSize);
-    // Send pixel data to the server
-    const ws = new WebSocket("ws://localhost:8000/ws");
-    ws.onopen = () => {
-        ws.send(JSON.stringify({ x, y, color: currentColor }));
-    };
-    canPlacePixel = false;
-    setTimeout(() => canPlacePixel = true, 300000); // 5 minutes
-});
+let currentLine = 0;
+let currentChar = 0;
 
-// WebSocket to receive pixel updates
-const ws = new WebSocket("ws://localhost:8000/ws");
-ws.onmessage = (event) => {
-    const { x, y, color } = JSON.parse(event.data);
-    context.fillStyle = color;
-    context.fillRect(x, y, pixelSize, pixelSize);
-};
+function typeCode() {
+    if (currentLine < codeLines.length) {
+        const currentText = codeLines[currentLine];
+        if (currentChar < currentText.length) {
+            codeElement.textContent += currentText[currentChar];
+            currentChar++;
+            Prism.highlightAll(); // Подсветка синтаксиса
+            setTimeout(typeCode, 10); // Скорость печати
+        } else {
+            codeElement.textContent += "\n";
+            currentChar = 0;
+            currentLine++;
+            setTimeout(typeCode, 100); // Задержка между строками
+        }
+    } else {
+        finishCode();
+    }
+}
+
+function finishCode() {
+    codeContainer.style.opacity = '0';
+    codeContainer.style.transform = 'scale(0.9)';
+    setTimeout(() => {
+        codeContainer.classList.add("hidden");
+        content.classList.remove("hidden");
+    }, 1000); // Пауза перед исчезновением кода и показом контента
+}
+
+typeCode();
