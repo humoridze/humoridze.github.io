@@ -6,12 +6,16 @@ body {
     align-items: center;
     height: 100vh;
     font-family: Arial, sans-serif;
-    background-color: #282c34;
+    background-color: #1e1e1e;
     color: white;
 }
 
 #code-container {
-    max-width: 80%;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
     font-family: 'Courier New', Courier, monospace;
     font-size: 14px;
@@ -19,9 +23,12 @@ body {
     word-wrap: break-word;
     background-color: #1e1e1e;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 0;
+    box-shadow: none;
     transition: opacity 1s ease, transform 1s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .hidden {
@@ -40,12 +47,11 @@ body {
 }
 
 .content-inner {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #272822;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    max-width: 360px; /* Уменьшена максимальная ширина */
-    margin: 0 auto; /* Центровка контейнера по горизонтали */
+    max-width: 360px;
+    margin: 0 auto;
 }
 
 .logo {
@@ -105,16 +111,16 @@ body {
     }
 }
 
-/* Медиазапросы для адаптивности */
+/* Медиазапросы */
 
 @media (max-width: 768px) {
     #code-container {
-        max-width: 90%;
+        padding: 20px;
     }
 
     .content-inner {
         padding: 15px;
-        max-width: 320px; /* Уменьшена максимальная ширина для планшетов */
+        max-width: 320px;
     }
 
     .logo {
@@ -130,7 +136,7 @@ body {
 @media (max-width: 480px) {
     .content-inner {
         padding: 10px;
-        max-width: 280px; /* Еще больше уменьшена максимальная ширина для мобильных устройств */
+        max-width: 280px;
     }
 
     .logo {
