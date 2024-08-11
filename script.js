@@ -42,7 +42,7 @@ function typeCode() {
             codeElement.textContent += currentText[currentChar];
             currentChar++;
             Prism.highlightAll(); 
-            setTimeout(typeCode, 20); 
+            setTimeout(typeCode, 10); 
         } else {
             codeElement.textContent += "\n";
             currentChar = 0;
