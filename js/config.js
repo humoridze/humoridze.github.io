@@ -22,7 +22,7 @@ var l_displayMapGamemode = true;
 
 // Custom server name configuration
 // Leave it blank for automatic server name
-var l_serverName = "IRON CLAD";
+var l_serverName = "WEST RP";
 
 // Use a video for the background?
 // Otherwise it will use images
@@ -135,9 +135,8 @@ var l_messagesEnabled = true;
 
 // Enter your custom messages below
 var l_messages = [
-	"Quests & Storyline",
-	"Blood, Glory & Taxes",
-	"There is no bullshit here, just pure medieval.",
+	"Уникальные системы",
+	"Кровь и деньги"
 ];
 
 // Random message order?
