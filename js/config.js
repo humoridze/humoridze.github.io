@@ -135,8 +135,7 @@ var l_messagesEnabled = true;
 
 // Enter your custom messages below
 var l_messages = [
-	"Уникальные системы",
-	"Кровь и деньги"
+	"Welcome"
 ];
 
 // Random message order?
