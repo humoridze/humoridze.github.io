@@ -10,6 +10,7 @@
 // Leave it blank to use text instead
 // (Put the files in the images folder)
 // (You can also use external URL)
+var l_serverImage = "";
 
 // Center logo?
 // 'true' or 'false'
