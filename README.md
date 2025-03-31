@@ -1,1 +1,1 @@
-humoridze.github.io
+https://humoridze.github.io
