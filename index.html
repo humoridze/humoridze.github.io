@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>humoridze — Developer</title>
+    <title>Иван Воробьев — Developer</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -36,6 +36,28 @@
         @keyframes pageLoad {
             to {
                 opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
@@ -127,6 +149,74 @@
         .tech-tag:hover {
             border-color: rgba(255,255,255,0.15);
             transform: translateY(-2px);
+        }
+
+        .education-card {
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 32px;
+            animation: fadeInUp 0.6s ease-out both;
+            animation-delay: 0.2s;
+        }
+
+        .education-header {
+            margin-bottom: 24px;
+        }
+
+        .education-header h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
+        }
+
+        .institution {
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .education-dates {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .progress-section {
+            margin-top: 24px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .progress-label {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .progress-percentage {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 8px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), #8b5cf6);
+            border-radius: 999px;
+            transition: width 1s ease-out;
         }
 
         .testimonials-grid {
@@ -267,6 +357,10 @@
             .testimonial {
                 padding: 24px;
             }
+
+            .education-card {
+                padding: 24px;
+            }
         }
 
         @media (min-width: 769px) {
@@ -279,7 +373,7 @@
 <body>
     <section class="hero">
         <div class="container">
-            <h1><span class="gradient-text">humoridze</span></h1>
+            <h1><span class="gradient-text">Иван Воробьев</span></h1>
             <p class="hero-subtitle">Разрабатываю боты, веб-приложения и автоматизирую бизнес-процессы. Специализируюсь на Python и JavaScript экосистемах.</p>
         </div>
     </section>
@@ -314,6 +408,30 @@
                 <div class="tech-tag">💾 SQLite</div>
                 <div class="tech-tag">🔧 Git</div>
                 <div class="tech-tag">🐳 Docker</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Образование</h2>
+            </div>
+            <div class="education-card">
+                <div class="education-header">
+                    <h3>Информационные системы и программирование</h3>
+                    <p class="institution">АНПОО Колледж Воронежского Института Высоких Технологий</p>
+                    <p class="education-dates">Август 2025 — Июнь 2028 • 2 года 10 месяцев</p>
+                </div>
+                <div class="progress-section">
+                    <div class="progress-header">
+                        <span class="progress-label">Прогресс обучения</span>
+                        <span class="progress-percentage" id="progressPercent">0%</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" id="progressBar" style="width: 0%"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -395,16 +513,52 @@
         <div class="container">
             <div class="footer-cta">
                 <h3>Готовы обсудить проект?</h3>
-                <p>Свяжитесь с менеджером в Telegram для обсуждения деталей и стоимости</p>
-                <a href="https://t.me/eyzenberg" class="cta-button" target="_blank">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21.198 2.433a2.242 2.242 0 0 0-1.022.215l-8.609 3.33c-2.068.8-4.133 1.598-5.724 2.21a405.15 405.15 0 0 1-2.849 1.09c-.42.147-.99.332-1.473.901-.728.968.193 1.798.919 2.286 1.61.516 3.275 1.009 4.886 1.524.214.083.412.156.69.12.417-.067.667-.36.933-.62.913-.89 1.815-1.788 2.706-2.697 1.878-1.914 3.757-3.827 5.672-5.703.525-.515 1.084.675.588 1.17-2.654 2.646-5.313 5.287-7.97 7.933-.443.443-.682.84-.547 1.465.343 1.593.695 3.182 1.035 4.775.133.619.222 1.21.878 1.619.447.278.98.38 1.486.262.923-.215 1.344-1.15 1.694-1.963.742-1.727 1.473-3.46 2.204-5.192.731-1.732 1.462-3.464 2.168-5.205a75.88 75.88 0 0 0 1.292-3.663c.166-.555.466-1.382-.1-1.87-.241-.208-.54-.31-.846-.336z"/>
-                    </svg>
-                    Написать менеджеру
-                </a>
+                <p>Свяжитесь со мной в Telegram или по email для обсуждения деталей и стоимости</p>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://t.me/eyzenberg" class="cta-button" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21.198 2.433a2.242 2.242 0 0 0-1.022.215l-8.609 3.33c-2.068.8-4.133 1.598-5.724 2.21a405.15 405.15 0 0 1-2.849 1.09c-.42.147-.99.332-1.473.901-.728.968.193 1.798.919 2.286 1.61.516 3.275 1.009 4.886 1.524.214.083.412.156.69.12.417-.067.667-.36.933-.62.913-.89 1.815-1.788 2.706-2.697 1.878-1.914 3.757-3.827 5.672-5.703.525-.515 1.084.675.588 1.17-2.654 2.646-5.313 5.287-7.97 7.933-.443.443-.682.84-.547 1.465.343 1.593.695 3.182 1.035 4.775.133.619.222 1.21.878 1.619.447.278.98.38 1.486.262.923-.215 1.344-1.15 1.694-1.963.742-1.727 1.473-3.46 2.204-5.192.731-1.732 1.462-3.464 2.168-5.205a75.88 75.88 0 0 0 1.292-3.663c.166-.555.466-1.382-.1-1.87-.241-.208-.54-.31-.846-.336z"/>
+                        </svg>
+                        Написать в Telegram
+                    </a>
+                    <a href="mailto:htvoeylife@gmail.com" class="cta-button">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        Написать Email
+                    </a>
+                </div>
             </div>
-            <p class="footer-text">© 2025 humoridze — Developer</p>
+            <p class="footer-text">© 2025 Иван Воробьев — Developer</p>
         </div>
     </footer>
+
+    <script>
+        // Calculate education progress
+        function updateEducationProgress() {
+            const startDate = new Date('2025-08-01');
+            const endDate = new Date('2028-06-30');
+            const currentDate = new Date();
+            
+            const totalDuration = endDate - startDate;
+            const elapsed = currentDate - startDate;
+            
+            let progress = (elapsed / totalDuration) * 100;
+            progress = Math.max(0, Math.min(100, progress));
+            
+            const progressBar = document.getElementById('progressBar');
+            const progressPercent = document.getElementById('progressPercent');
+            
+            if (progressBar && progressPercent) {
+                setTimeout(() => {
+                    progressBar.style.width = progress.toFixed(1) + '%';
+                    progressPercent.textContent = progress.toFixed(1) + '%';
+                }, 500);
+            }
+        }
+        
+        window.addEventListener('load', updateEducationProgress);
+    </script>
 </body>
 </html>
