@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Иван Воробьев — Developer</title>
+    <title>Ivan Vorobyev — Developer</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -59,6 +59,50 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+
+        @keyframes textFade {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            50% {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .text-transition {
+            animation: textFade 0.4s ease-in-out;
+        }
+
+        .controls {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 1000;
+        }
+
+        .control-btn {
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: var(--text);
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .control-btn:hover {
+            border-color: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
         }
 
         .container {
@@ -361,6 +405,16 @@
             .education-card {
                 padding: 24px;
             }
+
+            .controls {
+                top: 16px;
+                right: 16px;
+            }
+
+            .control-btn {
+                padding: 8px 12px;
+                font-size: 13px;
+            }
         }
 
         @media (min-width: 769px) {
@@ -371,17 +425,21 @@
     </style>
 </head>
 <body>
+    <div class="controls">
+        <button class="control-btn" id="langBtn">🇷🇺 RU</button>
+    </div>
+
     <section class="hero">
         <div class="container">
-            <h1><span class="gradient-text">Иван Воробьев</span></h1>
-            <p class="hero-subtitle">Разрабатываю боты, веб-приложения и автоматизирую бизнес-процессы. Специализируюсь на Python и JavaScript экосистемах.</p>
+            <h1><span class="gradient-text">Ivan Vorobyev</span></h1>
+            <p class="hero-subtitle" data-en="I develop bots, web applications and automate business processes. I specialize in Python and JavaScript ecosystems." data-ru="Разрабатываю боты, веб-приложения и автоматизирую бизнес-процессы. Специализируюсь на Python и JavaScript экосистемах.">I develop bots, web applications and automate business processes. I specialize in Python and JavaScript ecosystems.</p>
         </div>
     </section>
 
     <section class="section">
         <div class="container">
             <div class="section-header">
-                <h2>Языки</h2>
+                <h2 data-en="Languages" data-ru="Языки">Languages</h2>
             </div>
             <div class="tech-list">
                 <div class="tech-tag">🐍 Python</div>
@@ -400,7 +458,7 @@
     <section class="section">
         <div class="container">
             <div class="section-header">
-                <h2>Технологии</h2>
+                <h2 data-en="Technologies" data-ru="Технологии">Technologies</h2>
             </div>
             <div class="tech-list">
                 <div class="tech-tag">🟢 Node.js</div>
@@ -415,17 +473,17 @@
     <section class="section">
         <div class="container">
             <div class="section-header">
-                <h2>Образование</h2>
+                <h2 data-en="Education" data-ru="Образование">Education</h2>
             </div>
             <div class="education-card">
                 <div class="education-header">
-                    <h3>Информационные системы и программирование</h3>
-                    <p class="institution">АНПОО Колледж Воронежского Института Высоких Технологий</p>
-                    <p class="education-dates">Август 2025 — Июнь 2028 • 2 года 10 месяцев</p>
+                    <h3 data-en="Information Systems and Programming" data-ru="Информационные системы и программирование">Information Systems and Programming</h3>
+                    <p class="institution" data-en="ANPEO College of Voronezh Institute of High Technologies" data-ru="АНПОО Колледж Воронежского Института Высоких Технологий">Autonomous Non-profit Professional Educational Organization College of Voronezh Institute of High Technologies</p>
+                    <p class="education-dates" data-en="August 2025 — June 2028 • 2 years 10 months" data-ru="Август 2025 — Июнь 2028 • 2 года 10 месяцев">August 2025 — June 2028 • 2 years 10 months</p>
                 </div>
                 <div class="progress-section">
                     <div class="progress-header">
-                        <span class="progress-label">Прогресс обучения</span>
+                        <span class="progress-label" data-en="Study progress" data-ru="Прогресс обучения">Study progress</span>
                         <span class="progress-percentage" id="progressPercent">0%</span>
                     </div>
                     <div class="progress-bar-container">
@@ -439,71 +497,63 @@
     <section class="section">
         <div class="container">
             <div class="section-header">
-                <h2>Отзывы</h2>
+                <h2 data-en="Testimonials" data-ru="Отзывы">Testimonials</h2>
             </div>
             <div class="testimonials-grid">
                 <div class="testimonial">
                     <div class="testimonial-header">
                         <div class="client-info">
-                            <div class="client-avatar">И</div>
+                            <div class="client-avatar">I</div>
                             <div class="client-details">
-                                <h3>Игорь</h3>
+                                <h3 data-en="Igor" data-ru="Игорь">Igor</h3>
                                 <div class="project-name">CS:GO Market Parser</div>
                             </div>
                         </div>
                         <div class="rating">★★★★★</div>
                     </div>
-                    <p class="testimonial-text">
-                        Иван сделал очень сложную работу в максимально короткие сроки — нашел и исправил критическую ошибку в парсере CS:GO маркета. Каждый свой шаг расписывал в чате, показывал что именно делает. API работал нестабильно, но Иван полностью переработал систему обработки запросов. Теперь парсер работает без сбоев. Всем рекомендую!
-                    </p>
+                    <p class="testimonial-text" data-en="Ivan did a very complex job in the shortest possible time — found and fixed a critical bug in the CS:GO market parser. He described every step in the chat, showing exactly what he was doing. The API was unstable, but Ivan completely redesigned the request processing system. Now the parser works without failures. I recommend it to everyone!" data-ru="Иван сделал очень сложную работу в максимально короткие сроки — нашел и исправил критическую ошибку в парсере CS:GO маркета. Каждый свой шаг расписывал в чате, показывал что именно делает. API работал нестабильно, но Иван полностью переработал систему обработки запросов. Теперь парсер работает без сбоев. Всем рекомендую!">Ivan did a very complex job in the shortest possible time — found and fixed a critical bug in the CS:GO market parser. He described every step in the chat, showing exactly what he was doing. The API was unstable, but Ivan completely redesigned the request processing system. Now the parser works without failures. I recommend it to everyone!</p>
                 </div>
 
                 <div class="testimonial">
                     <div class="testimonial-header">
                         <div class="client-info">
-                            <div class="client-avatar">С</div>
+                            <div class="client-avatar">S</div>
                             <div class="client-details">
-                                <h3>Сергей</h3>
-                                <div class="project-name">Бот для шинного сервиса</div>
+                                <h3 data-en="Sergey" data-ru="Сергей">Sergey</h3>
+                                <div class="project-name" data-en="Tire Service Bot" data-ru="Бот для шинного сервиса">Tire Service Bot</div>
                             </div>
                         </div>
                         <div class="rating">★★★★★</div>
                     </div>
-                    <p class="testimonial-text">
-                        Иван полностью реализовал функционал Telegram-бота согласно ТЗ для автоматизации расчетов в нашем шинном сервисе. Предоставил рабочее решение и тестовую версию, которую мы могли проверить лично. Очень впечатлен оперативностью и качеством работы. Бот помог автоматизировать расчеты, что значительно упростило наши бизнес-процессы.
-                    </p>
+                    <p class="testimonial-text" data-en="Ivan fully implemented the Telegram bot functionality according to the requirements for automating calculations in our tire service. He provided a working solution and a test version that we could check personally. Very impressed with the speed and quality of work. The bot helped automate calculations, which significantly simplified our business processes." data-ru="Иван полностью реализовал функционал Telegram-бота согласно ТЗ для автоматизации расчетов в нашем шинном сервисе. Предоставил рабочее решение и тестовую версию, которую мы могли проверить лично. Очень впечатлен оперативностью и качеством работы. Бот помог автоматизировать расчеты, что значительно упростило наши бизнес-процессы.">Ivan fully implemented the Telegram bot functionality according to the requirements for automating calculations in our tire service. He provided a working solution and a test version that we could check personally. Very impressed with the speed and quality of work. The bot helped automate calculations, which significantly simplified our business processes.</p>
                 </div>
 
                 <div class="testimonial">
                     <div class="testimonial-header">
                         <div class="client-info">
-                            <div class="client-avatar">С</div>
+                            <div class="client-avatar">S</div>
                             <div class="client-details">
-                                <h3>Саид</h3>
-                                <div class="project-name">VPN-сервис</div>
+                                <h3 data-en="Said" data-ru="Саид">Said</h3>
+                                <div class="project-name" data-en="VPN Service" data-ru="VPN-сервис">VPN Service</div>
                             </div>
                         </div>
                         <div class="rating">★★★★★</div>
                     </div>
-                    <p class="testimonial-text">
-                        Иван разработал полнофункциональный Telegram-бот для автоматизации продажи и управления VPN-подписками. Бот интегрирован с платежной системой и панелью управления VPN-сервером. Реализована система аутентификации, гибкая система тарифов, автоматическая генерация VPN-ключей и удобный пользовательский интерфейс. Благодаря его работе мы получили полностью автоматизированную систему продажи VPN-доступа.
-                    </p>
+                    <p class="testimonial-text" data-en="Ivan developed a fully functional Telegram bot for automating the sale and management of VPN subscriptions. The bot is integrated with the payment system and VPN server control panel. An authentication system, flexible tariff system, automatic VPN key generation and convenient user interface have been implemented. Thanks to his work, we received a fully automated VPN access sales system." data-ru="Иван разработал полнофункциональный Telegram-бот для автоматизации продажи и управления VPN-подписками. Бот интегрирован с платежной системой и панелью управления VPN-сервером. Реализована система аутентификации, гибкая система тарифов, автоматическая генерация VPN-ключей и удобный пользовательский интерфейс. Благодаря его работе мы получили полностью автоматизированную систему продажи VPN-доступа.">Ivan developed a fully functional Telegram bot for automating the sale and management of VPN subscriptions. The bot is integrated with the payment system and VPN server control panel. An authentication system, flexible tariff system, automatic VPN key generation and convenient user interface have been implemented. Thanks to his work, we received a fully automated VPN access sales system.</p>
                 </div>
 
                 <div class="testimonial">
                     <div class="testimonial-header">
                         <div class="client-info">
-                            <div class="client-avatar">Я</div>
+                            <div class="client-avatar">Y</div>
                             <div class="client-details">
-                                <h3>Ярослав</h3>
-                                <div class="project-name">Медицинский помощник</div>
+                                <h3 data-en="Yaroslav" data-ru="Ярослав">Yaroslav</h3>
+                                <div class="project-name" data-en="Medical Assistant" data-ru="Медицинский помощник">Medical Assistant</div>
                             </div>
                         </div>
                         <div class="rating">★★★★★</div>
                     </div>
-                    <p class="testimonial-text">
-                        Иван создал бота для напоминания о приеме таблеток с очень удобным и понятным интерфейсом. Можно настроить время для каждого лекарства, бот присылает напоминания с названием препарата и дозировкой. Есть возможность отметить приём или отложить уведомление. Реализовано действительно качественно и продумано до мелочей.
-                    </p>
+                    <p class="testimonial-text" data-en="Ivan created a bot for reminding you to take pills with a very convenient and understandable interface. You can set the time for each medicine, the bot sends reminders with the name of the drug and dosage. There is an option to mark the intake or postpone the notification. It is really well done and thought out to the smallest detail." data-ru="Иван создал бота для напоминания о приеме таблеток с очень удобным и понятным интерфейсом. Можно настроить время для каждого лекарства, бот присылает напоминания с названием препарата и дозировкой. Есть возможность отметить приём или отложить уведомление. Реализовано действительно качественно и продумано до мелочей.">Ivan created a bot for reminding you to take pills with a very convenient and understandable interface. You can set the time for each medicine, the bot sends reminders with the name of the drug and dosage. There is an option to mark the intake or postpone the notification. It is really well done and thought out to the smallest detail.</p>
                 </div>
             </div>
         </div>
@@ -512,30 +562,61 @@
     <footer>
         <div class="container">
             <div class="footer-cta">
-                <h3>Готовы обсудить проект?</h3>
-                <p>Свяжитесь со мной в Telegram или по email для обсуждения деталей и стоимости</p>
+                <h3 data-en="Ready to discuss the project?" data-ru="Готовы обсудить проект?">Ready to discuss the project?</h3>
+                <p data-en="Contact me on Telegram or by email to discuss details and costs" data-ru="Свяжитесь со мной в Telegram или по email для обсуждения деталей и стоимости">Contact me on Telegram or by email to discuss details and costs</p>
                 <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
                     <a href="https://t.me/eyzenberg" class="cta-button" target="_blank">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21.198 2.433a2.242 2.242 0 0 0-1.022.215l-8.609 3.33c-2.068.8-4.133 1.598-5.724 2.21a405.15 405.15 0 0 1-2.849 1.09c-.42.147-.99.332-1.473.901-.728.968.193 1.798.919 2.286 1.61.516 3.275 1.009 4.886 1.524.214.083.412.156.69.12.417-.067.667-.36.933-.62.913-.89 1.815-1.788 2.706-2.697 1.878-1.914 3.757-3.827 5.672-5.703.525-.515 1.084.675.588 1.17-2.654 2.646-5.313 5.287-7.97 7.933-.443.443-.682.84-.547 1.465.343 1.593.695 3.182 1.035 4.775.133.619.222 1.21.878 1.619.447.278.98.38 1.486.262.923-.215 1.344-1.15 1.694-1.963.742-1.727 1.473-3.46 2.204-5.192.731-1.732 1.462-3.464 2.168-5.205a75.88 75.88 0 0 0 1.292-3.663c.166-.555.466-1.382-.1-1.87-.241-.208-.54-.31-.846-.336z"/>
                         </svg>
-                        Написать в Telegram
+                        <span data-en="Write on Telegram" data-ru="Написать в Telegram">Write on Telegram</span>
                     </a>
                     <a href="mailto:htvoeylife@gmail.com" class="cta-button">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                             <polyline points="22,6 12,13 2,6"></polyline>
                         </svg>
-                        Написать Email
+                        <span data-en="Write Email" data-ru="Написать Email">Write Email</span>
                     </a>
                 </div>
             </div>
-            <p class="footer-text">© 2025 Иван Воробьев — Developer</p>
+            <p class="footer-text" data-en="© 2025 Ivan Vorobyev — Developer" data-ru="© 2025 Иван Воробьев — Developer">© 2025 Ivan Vorobyev — Developer</p>
         </div>
     </footer>
 
     <script>
-        // Calculate education progress
+        // Language management
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ru' : 'en';
+            document.documentElement.lang = currentLang;
+            
+            const elements = document.querySelectorAll('[data-en][data-ru]');
+            elements.forEach(el => {
+                el.classList.add('text-transition');
+                setTimeout(() => {
+                    el.textContent = el.getAttribute(`data-${currentLang}`);
+                }, 200);
+                setTimeout(() => {
+                    el.classList.remove('text-transition');
+                }, 400);
+            });
+            
+            const langBtn = document.getElementById('langBtn');
+            langBtn.classList.add('text-transition');
+            setTimeout(() => {
+                if (currentLang === 'en') {
+                    langBtn.innerHTML = 'RU';
+                } else {
+                    langBtn.innerHTML = 'EN';
+                }
+            }, 200);
+            setTimeout(() => {
+                langBtn.classList.remove('text-transition');
+            }, 400);
+        }
+
         function updateEducationProgress() {
             const startDate = new Date('2025-08-01');
             const endDate = new Date('2028-06-30');
@@ -557,7 +638,9 @@
                 }, 500);
             }
         }
-        
+
+        // Event listeners
+        document.getElementById('langBtn').addEventListener('click', toggleLanguage);
         window.addEventListener('load', updateEducationProgress);
     </script>
 </body>
