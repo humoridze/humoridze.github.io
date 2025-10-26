@@ -1,13 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="DDY_558RxwCU3RrY5zjv0y17lYB5090zxhhJBWm9ADc" />
-    <meta name="yandex-verification" content="df4beb86d5fa0110" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Ivan Vorobyev — Developer</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <title>Ivan Vorobyev — Python & JavaScript Developer</title>
+  <meta name="description" content="Portfolio of Ivan Vorobyev — developer specializing in Python and JavaScript. I create bots, web apps, and automation solutions for business." />
+  <meta name="keywords" content="Ivan Vorobyev, Python developer, JavaScript developer, Telegram bots, Node.js, web developer, automation, portfolio, Docker, SQL" />
+  <meta name="google-site-verification" content="DDY_558RxwCU3RrY5zjv0y17lYB5090zxhhJBWm9ADc" />
+  <meta name="yandex-verification" content="df4beb86d5fa0110" />
+
+  <meta property="og:title" content="Ivan Vorobyev — Python & JavaScript Developer" />
+  <meta property="og:description" content="Developer specializing in Python and JavaScript. I create bots, web applications and automation tools." />
+  <meta property="og:image" content="https://humoridze.github.io/favicon.ico" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://humoridze.github.io" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Ivan Vorobyev — Developer" />
+  <meta name="twitter:description" content="Portfolio of Python and JavaScript developer. Telegram bots, web automation, and full-stack solutions." />
+  <meta name="twitter:image" content="https://humoridze.github.io/favicon.ico" />
+
+  <link rel="canonical" href="https://humoridze.github.io" />
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ivan Vorobyev",
+    "jobTitle": "Python & JavaScript Developer",
+    "url": "https://humoridze.github.io",
+    "sameAs": [
+      "https://t.me/eyzenberg",
+      "mailto:htvoeylife@gmail.com"
+    ],
+    "description": "Developer creating bots, web apps, and automation tools."
+  }
+  </script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
@@ -428,15 +460,16 @@
     </style>
 </head>
 <body>
-    <div class="controls">
-        <button class="control-btn" id="langBtn">RU</button>
-    </div>
+  <header class="controls">
+    <button class="control-btn" id="langBtn">RU</button>
+  </header>
 
+  <main>
     <section class="hero">
-        <div class="container">
-            <h1><span class="gradient-text">Ivan Vorobyev</span></h1>
-            <p class="hero-subtitle" data-en="I develop bots, web applications and automate business processes. I specialize in Python and JavaScript ecosystems." data-ru="Разрабатываю боты, веб-приложения и автоматизирую бизнес-процессы. Специализируюсь на Python и JavaScript экосистемах.">I develop bots, web applications and automate business processes. I specialize in Python and JavaScript ecosystems.</p>
-        </div>
+      <div class="container">
+        <h1><span class="gradient-text">Ivan Vorobyev</span></h1>
+        <p class="hero-subtitle" data-en="I develop bots, web applications and automate business processes. I specialize in Python and JavaScript ecosystems." data-ru="Разрабатываю боты, веб-приложения и автоматизирую бизнес-процессы. Специализируюсь на Python и JavaScript экосистемах.">I develop bots, web applications and automate business processes. I specialize in Python and JavaScript ecosystems.</p>
+      </div>
     </section>
 
     <section class="section">
@@ -587,64 +620,41 @@
         </div>
     </footer>
 
-    <script>
-        // Language management
-        let currentLang = 'en';
-
-        function toggleLanguage() {
-            currentLang = currentLang === 'en' ? 'ru' : 'en';
-            document.documentElement.lang = currentLang;
-            
-            const elements = document.querySelectorAll('[data-en][data-ru]');
-            elements.forEach(el => {
-                el.classList.add('text-transition');
-                setTimeout(() => {
-                    el.textContent = el.getAttribute(`data-${currentLang}`);
-                }, 200);
-                setTimeout(() => {
-                    el.classList.remove('text-transition');
-                }, 400);
-            });
-            
-            const langBtn = document.getElementById('langBtn');
-            langBtn.classList.add('text-transition');
-            setTimeout(() => {
-                if (currentLang === 'en') {
-                    langBtn.innerHTML = 'RU';
-                } else {
-                    langBtn.innerHTML = 'EN';
-                }
-            }, 200);
-            setTimeout(() => {
-                langBtn.classList.remove('text-transition');
-            }, 400);
-        }
-
-        function updateEducationProgress() {
-            const startDate = new Date('2025-08-01');
-            const endDate = new Date('2028-06-30');
-            const currentDate = new Date();
-            
-            const totalDuration = endDate - startDate;
-            const elapsed = currentDate - startDate;
-            
-            let progress = (elapsed / totalDuration) * 100;
-            progress = Math.max(0, Math.min(100, progress));
-            
-            const progressBar = document.getElementById('progressBar');
-            const progressPercent = document.getElementById('progressPercent');
-            
-            if (progressBar && progressPercent) {
-                setTimeout(() => {
-                    progressBar.style.width = progress.toFixed(1) + '%';
-                    progressPercent.textContent = progress.toFixed(1) + '%';
-                }, 500);
-            }
-        }
-
-        // Event listeners
-        document.getElementById('langBtn').addEventListener('click', toggleLanguage);
-        window.addEventListener('load', updateEducationProgress);
-    </script>
+  <script>
+    let currentLang='en';
+    function toggleLanguage(){
+      currentLang=currentLang==='en'?'ru':'en';
+      document.documentElement.lang=currentLang;
+      const elements=document.querySelectorAll('[data-en][data-ru]');
+      elements.forEach(el=>{
+        el.classList.add('text-transition');
+        setTimeout(()=>{el.textContent=el.getAttribute(`data-${currentLang}`);},200);
+        setTimeout(()=>{el.classList.remove('text-transition');},400);
+      });
+      const langBtn=document.getElementById('langBtn');
+      langBtn.classList.add('text-transition');
+      setTimeout(()=>{langBtn.innerHTML=currentLang==='en'?'RU':'EN';},200);
+      setTimeout(()=>{langBtn.classList.remove('text-transition');},400);
+    }
+    function updateEducationProgress(){
+      const startDate=new Date('2025-08-01');
+      const endDate=new Date('2028-06-30');
+      const currentDate=new Date();
+      const total=endDate-startDate;
+      const elapsed=currentDate-startDate;
+      let progress=(elapsed/total)*100;
+      progress=Math.max(0,Math.min(100,progress));
+      const bar=document.getElementById('progressBar');
+      const percent=document.getElementById('progressPercent');
+      if(bar&&percent){
+        setTimeout(()=>{
+          bar.style.width=progress.toFixed(1)+'%';
+          percent.textContent=progress.toFixed(1)+'%';
+        },500);
+      }
+    }
+    document.getElementById('langBtn').addEventListener('click',toggleLanguage);
+    window.addEventListener('load',updateEducationProgress);
+  </script>
 </body>
 </html>
