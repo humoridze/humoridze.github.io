@@ -1,1 +1,1 @@
-https://humoridze.github.io
+https://codexdev.ru
