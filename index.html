@@ -530,11 +530,11 @@ footer a:hover { color:var(--accent2); }
       <div class="reveal reveal-delay-1">
         <p class="contact-intro" data-i18n="contacts.intro">I'm open to freelance projects, remote work, and interesting collaborations. Feel free to reach out via any channel below.</p>
         <div class="contact-links">
-          <a href="/cdn-cgi/l/email-protection#365e424059534f5a5f505376515b575f5a1855595b" class="contact-link">
+          <a href="#" id="email-link" class="contact-link">
             <div class="contact-link-icon">&#9993;</div>
             <div class="contact-link-text">
               <span class="contact-link-label" data-i18n="c.email">Email</span>
-              <span class="contact-link-value"><span class="__cf_email__" data-cfemail="91f9e5e7fef4e8fdf8f7f4d1f6fcf0f8fdbff2fefc">[email&#160;protected]</span></span>
+              <span class="contact-link-value" id="email-val"></span>
             </div>
           </a>
           <a href="https://t.me/legendagachimuchi" target="_blank" rel="noopener" class="contact-link">
@@ -571,7 +571,7 @@ footer a:hover { color:var(--accent2); }
   <span>&#169; 2026 Ivan Vorobiev &middot; <a href="https://github.com/humoridze" target="_blank">@humoridze</a></span>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* ════════════════════════════════
    TRANSLATIONS
 ════════════════════════════════ */
@@ -851,6 +851,15 @@ document.addEventListener('DOMContentLoaded', function() {
   applyLang('en', false);
 
 });
+
+(function() {
+  var u = 'htvoeylife', d = 'gmail.com';
+  var el = document.getElementById('email-link');
+  var val = document.getElementById('email-val');
+  if (el) el.href = 'mailto:' + u + '@' + d;
+  if (val) val.textContent = u + '@' + d;
+})();
+
 </script>
 </body>
 </html>
