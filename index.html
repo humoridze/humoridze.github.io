@@ -1,660 +1,856 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>humoridze — Backend & Bot Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet" />
+<style>
+/* ─── Variables ─── */
+:root {
+  --bg:         #0a0a0f;
+  --bg2:        #0f0f1a;
+  --bg3:        #141420;
+  --border:     #1e1e2e;
+  --text:       #e2e2f0;
+  --muted:      #6b6b8a;
+  --accent:     #7c6af7;
+  --accent2:    #4ecca3;
+  --accent3:    #f7776a;
+  --card:       #0d0d1a;
+  --card-hover: #121225;
+  --glow:       rgba(124,106,247,0.15);
+  --glow2:      rgba(78,204,163,0.1);
+  --font-mono:  'JetBrains Mono', monospace;
+  --font-disp:  'Syne', sans-serif;
+  --radius:     6px;
+  --tr:         0.25s cubic-bezier(0.4,0,0.2,1);
+}
+[data-theme="light"] {
+  --bg:         #f5f4ff;
+  --bg2:        #edeeff;
+  --bg3:        #e6e5fb;
+  --border:     #d0cff5;
+  --text:       #16162a;
+  --muted:      #7575a0;
+  --accent:     #5b45e8;
+  --accent2:    #1a9e7e;
+  --accent3:    #d9483b;
+  --card:       #ffffff;
+  --card-hover: #f0efff;
+  --glow:       rgba(91,69,232,0.1);
+  --glow2:      rgba(26,158,126,0.08);
+}
 
-  <title>Ivan Vorobyev — Python & JavaScript Developer</title>
-  <meta name="description" content="Portfolio of Ivan Vorobyev — developer specializing in Python and JavaScript. I create bots, web apps, and automation solutions for business." />
-  <meta name="keywords" content="Ivan Vorobyev, Python developer, JavaScript developer, Telegram bots, Node.js, web developer, automation, portfolio, Docker, SQL" />
-  <meta name="google-site-verification" content="DDY_558RxwCU3RrY5zjv0y17lYB5090zxhhJBWm9ADc" />
-  <meta name="yandex-verification" content="df4beb86d5fa0110" />
+/* ─── Reset ─── */
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; font-size:16px; }
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-mono);
+  line-height: 1.7;
+  overflow-x: hidden;
+  transition: background-color var(--tr), color var(--tr);
+}
+a { color:var(--accent); text-decoration:none; transition:color var(--tr); }
+a:hover { color:var(--accent2); }
+ul { list-style:none; }
 
-  <meta property="og:title" content="Ivan Vorobyev — Python & JavaScript Developer" />
-  <meta property="og:description" content="Developer specializing in Python and JavaScript. I create bots, web applications and automation tools." />
-  <meta property="og:image" content="https://humoridze.github.io/favicon.ico" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://humoridze.github.io" />
+/* grid bg — behind everything */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: -1;
+  transition: opacity var(--tr);
+}
+[data-theme="light"] body::after { opacity: 0.12; }
 
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Ivan Vorobyev — Developer" />
-  <meta name="twitter:description" content="Portfolio of Python and JavaScript developer. Telegram bots, web automation, and full-stack solutions." />
-  <meta name="twitter:image" content="https://humoridze.github.io/favicon.ico" />
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width:6px; }
+::-webkit-scrollbar-track { background:var(--bg); }
+::-webkit-scrollbar-thumb { background:var(--border); border-radius:3px; }
+::-webkit-scrollbar-thumb:hover { background:var(--accent); }
 
-  <link rel="canonical" href="https://humoridze.github.io" />
+/* ─── Nav ─── */
+nav {
+  position: sticky; top: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 0.5rem;
+  padding: 0 clamp(1.5rem,5vw,4rem);
+  height: 60px;
+  background-color: var(--bg);
+  border-bottom: 1px solid var(--border);
+  transition: background-color var(--tr), border-color var(--tr);
+}
+nav.scrolled { background-color: var(--bg2); }
 
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+.nav-logo { font-family:var(--font-mono); font-weight:700; font-size:1rem; color:var(--accent); letter-spacing:0.05em; }
+.nav-logo span { color:var(--accent2); }
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Ivan Vorobyev",
-    "jobTitle": "Python & JavaScript Developer",
-    "url": "https://humoridze.github.io",
-    "sameAs": [
-      "https://t.me/eyzenberg",
-      "mailto:htvoeylife@gmail.com"
-    ],
-    "description": "Developer creating bots, web apps, and automation tools."
+.nav-links { display:flex; gap:2rem; align-items:center; }
+.nav-links a {
+  font-size:0.78rem; color:var(--muted); font-weight:500;
+  letter-spacing:0.08em; text-transform:uppercase;
+  transition:color var(--tr); position:relative;
+}
+.nav-links a::after {
+  content:''; position:absolute; bottom:-2px; left:0;
+  width:0; height:1px; background:var(--accent2); transition:width var(--tr);
+}
+.nav-links a:hover { color:var(--text); }
+.nav-links a:hover::after { width:100%; }
+
+.nav-controls { display:flex; align-items:center; gap:0.75rem; flex-wrap:wrap; }
+
+.control-btn {
+  background:var(--bg3); border:1px solid var(--border); color:var(--muted);
+  font-family:var(--font-mono); font-size:0.72rem; padding:0.3rem 0.7rem;
+  border-radius:var(--radius); cursor:pointer; letter-spacing:0.05em; white-space:nowrap;
+  transition:all var(--tr);
+}
+.control-btn:hover { border-color:var(--accent); color:var(--accent); background:var(--glow); }
+.control-btn.active { border-color:var(--accent); color:var(--accent); background:var(--glow); }
+
+.lang-group { display:flex; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; }
+.lang-group .control-btn { border:none; border-radius:0; border-right:1px solid var(--border); background:transparent; }
+.lang-group .control-btn:last-child { border-right:none; }
+
+/* ─── Hamburger ─── */
+.hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; background:none; border:none; }
+.hamburger span { display:block; width:22px; height:2px; background:var(--muted); border-radius:2px; transition:all var(--tr); }
+.hamburger.open span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
+.hamburger.open span:nth-child(2) { opacity:0; }
+.hamburger.open span:nth-child(3) { transform:rotate(-45deg) translate(5px,-5px); }
+
+/* ─── Hero ─── */
+section { position:relative; z-index:1; }
+
+#hero {
+  padding: clamp(3.5rem,8vw,6rem) clamp(1.5rem,8vw,8rem) clamp(3rem,6vw,5rem);
+  overflow: hidden;
+}
+.hero-inner { position:relative; z-index:2; max-width:900px; width:100%; }
+
+.hero-tag {
+  display:inline-flex; align-items:center; gap:0.5rem;
+  font-size:0.75rem; color:var(--accent2); letter-spacing:0.12em; text-transform:uppercase;
+  margin-bottom:1.5rem; opacity:0; animation:fadeUp 0.6s 0.2s forwards;
+}
+.hero-tag::before { content:''; display:inline-block; width:20px; height:1px; background:var(--accent2); }
+
+.hero-name {
+  font-family:var(--font-disp); font-size:clamp(3rem,10vw,7rem);
+  font-weight:800; line-height:0.95; letter-spacing:-0.03em; margin-bottom:0.5rem;
+  opacity:0; animation:fadeUp 0.6s 0.35s forwards;
+}
+.hero-name .first { display:block; color:var(--text); }
+.hero-name .last  { display:block; -webkit-text-stroke:1px var(--accent); color:transparent; }
+[data-theme="light"] .hero-name .last { -webkit-text-stroke:1.5px var(--accent); }
+
+.hero-handle {
+  font-size:clamp(1rem,2.5vw,1.3rem); color:var(--accent); font-weight:500; margin-bottom:1.5rem;
+  opacity:0; animation:fadeUp 0.6s 0.5s forwards;
+}
+.hero-handle span { color:var(--muted); }
+
+.hero-desc {
+  max-width:520px; font-size:0.88rem; color:var(--muted); line-height:1.8; margin-bottom:2.5rem;
+  opacity:0; animation:fadeUp 0.6s 0.65s forwards;
+}
+
+.hero-cta { display:flex; gap:1rem; flex-wrap:wrap; opacity:0; animation:fadeUp 0.6s 0.8s forwards; }
+
+.btn {
+  display:inline-flex; align-items:center; gap:0.5rem;
+  font-family:var(--font-mono); font-size:0.8rem; font-weight:500;
+  letter-spacing:0.06em; text-transform:uppercase;
+  padding:0.75rem 1.5rem; border-radius:var(--radius);
+  cursor:pointer; border:none; text-decoration:none; transition:all var(--tr);
+}
+.btn-primary { background:var(--accent); color:#fff; box-shadow:0 0 20px var(--glow); }
+.btn-primary:hover { background:var(--accent2); color:#fff; box-shadow:0 0 30px var(--glow2); transform:translateY(-2px); }
+.btn-outline { background:transparent; border:1px solid var(--border); color:var(--muted); }
+.btn-outline:hover { border-color:var(--accent); color:var(--accent); background:var(--glow); transform:translateY(-2px); }
+
+.hero-orb { position:absolute; border-radius:50%; filter:blur(80px); pointer-events:none; z-index:0; }
+.hero-orb-1 { width:400px; height:400px; background:radial-gradient(circle,rgba(124,106,247,0.2),transparent 70%); top:-100px; right:-100px; animation:float1 8s ease-in-out infinite; }
+.hero-orb-2 { width:300px; height:300px; background:radial-gradient(circle,rgba(78,204,163,0.15),transparent 70%); bottom:0; left:20%; animation:float2 10s ease-in-out infinite; }
+
+.hero-meta {
+  position:absolute; bottom:2.5rem; right:clamp(1.5rem,5vw,4rem);
+  display:flex; flex-direction:column; align-items:flex-end; gap:0.25rem;
+  opacity:0; animation:fadeIn 1s 1.2s forwards;
+}
+.hero-meta-item { font-size:0.72rem; color:var(--muted); display:flex; align-items:center; gap:0.5rem; }
+.hero-meta-item::before { content:''; width:4px; height:4px; border-radius:50%; background:var(--accent2); }
+
+.scroll-indicator {
+  position:absolute; bottom:2.5rem; left:50%; transform:translateX(-50%);
+  display:flex; flex-direction:column; align-items:center; gap:0.5rem;
+  opacity:0; animation:fadeIn 1s 1.5s forwards;
+}
+.scroll-line { width:1px; height:50px; background:linear-gradient(180deg,var(--accent),transparent); animation:scrollPulse 2s ease-in-out infinite; }
+.scroll-label { font-size:0.65rem; color:var(--muted); letter-spacing:0.15em; text-transform:uppercase; writing-mode:vertical-rl; }
+
+/* ─── Sections ─── */
+.section-wrap { padding:clamp(4rem,10vw,7rem) clamp(1.5rem,8vw,8rem); max-width:1100px; margin:0 auto; }
+.section-header { display:flex; align-items:center; gap:1rem; margin-bottom:3.5rem; }
+.section-num { font-size:0.72rem; color:var(--accent); letter-spacing:0.12em; font-weight:500; }
+.section-title { font-family:var(--font-disp); font-size:clamp(1.8rem,4vw,2.8rem); font-weight:800; color:var(--text); letter-spacing:-0.02em; }
+.section-line { flex:1; height:1px; background:linear-gradient(90deg,var(--border),transparent); }
+
+/* ─── About ─── */
+#about { background-color:var(--bg2); }
+.about-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; }
+.about-text p { font-size:0.88rem; color:var(--muted); line-height:1.9; margin-bottom:1.2rem; }
+.about-text p strong { color:var(--text); font-weight:500; }
+.about-highlight { border-left:2px solid var(--accent); padding-left:1rem; margin:1.5rem 0; font-size:0.85rem; color:var(--accent2); font-style:italic; }
+.about-stats { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.stat-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:1.25rem; transition:border-color var(--tr), transform var(--tr); }
+.stat-card:hover { border-color:var(--accent); transform:translateY(-2px); }
+.stat-num { font-family:var(--font-disp); font-size:2.2rem; font-weight:800; color:var(--accent); line-height:1; margin-bottom:0.25rem; }
+.stat-label { font-size:0.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em; }
+
+/* ─── Skills ─── */
+.skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; }
+.skill-category {
+  background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:1.5rem;
+  position:relative; overflow:hidden;
+  transition:border-color var(--tr), background var(--tr), transform var(--tr);
+}
+.skill-category::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  transform:scaleX(0); transform-origin:left; transition:transform 0.4s ease;
+}
+.skill-category:hover::before { transform:scaleX(1); }
+.skill-category:hover { border-color:var(--accent); transform:translateY(-3px); background:var(--card-hover); }
+.skill-cat-title { font-size:0.72rem; color:var(--accent2); text-transform:uppercase; letter-spacing:0.12em; font-weight:500; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem; }
+.skill-cat-title::before { content:'//'; color:var(--muted); }
+.skill-tags { display:flex; flex-wrap:wrap; gap:0.5rem; }
+.skill-tag { font-size:0.75rem; padding:0.25rem 0.6rem; border-radius:3px; background:var(--bg3); border:1px solid var(--border); color:var(--text); transition:all var(--tr); cursor:default; }
+.skill-tag:hover { border-color:var(--accent); color:var(--accent); background:var(--glow); }
+
+/* ─── Projects ─── */
+#projects { background-color:var(--bg2); }
+.projects-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem; }
+.project-card {
+  background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+  padding:1.75rem; display:flex; flex-direction:column; gap:1rem;
+  position:relative; overflow:hidden; cursor:default;
+  transition:border-color var(--tr), transform var(--tr);
+}
+.project-card::after {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(circle at var(--mx,50%) var(--my,50%),var(--glow),transparent 60%);
+  opacity:0; transition:opacity 0.3s; pointer-events:none;
+}
+.project-card:hover::after { opacity:1; }
+.project-card:hover { border-color:var(--accent); transform:translateY(-4px); }
+.project-header { display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; }
+.project-year { font-size:0.7rem; color:var(--muted); letter-spacing:0.1em; flex-shrink:0; padding-top:0.15rem; }
+.project-title { font-family:var(--font-disp); font-size:1.05rem; font-weight:600; color:var(--text); line-height:1.3; }
+.project-desc { font-size:0.82rem; color:var(--muted); line-height:1.7; }
+.project-tech { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:auto; }
+.tech-badge { font-size:0.7rem; padding:0.2rem 0.5rem; border-radius:3px; background:var(--bg3); border:1px solid var(--border); color:var(--accent); font-weight:500; }
+
+/* ─── Contacts ─── */
+.contacts-inner { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; }
+.contact-intro { font-size:0.88rem; color:var(--muted); line-height:1.9; margin-bottom:2rem; }
+.contact-links { display:flex; flex-direction:column; gap:0.75rem; }
+
+.contact-link {
+  display:flex; align-items:center; gap:1rem; padding:1rem 1.25rem;
+  background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+  color:var(--text); font-size:0.82rem; text-decoration:none;
+  transition:border-color var(--tr), background var(--tr), color var(--tr), transform var(--tr);
+}
+.contact-link:hover { border-color:var(--accent); background:var(--glow); color:var(--accent); transform:translateX(4px); }
+
+/* ── icon: fixed size, never disappears on hover ── */
+.contact-link-icon {
+  width:36px; height:36px; min-width:36px;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--bg3); border-radius:4px; font-size:1rem;
+  color:var(--text);
+  transition:background var(--tr), color var(--tr);
+  flex-shrink:0;
+}
+.contact-link:hover .contact-link-icon { background:var(--accent); color:#fff; }
+
+.contact-link-text { display:flex; flex-direction:column; }
+.contact-link-label { font-size:0.68rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em; }
+.contact-link-value { font-size:0.82rem; font-weight:500; }
+
+/* ─── Terminal ─── */
+.contact-terminal { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; }
+.terminal-bar { background:var(--bg3); padding:0.75rem 1rem; display:flex; align-items:center; gap:0.5rem; border-bottom:1px solid var(--border); }
+.t-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+.t-dot-r { background:#f7776a; } .t-dot-y { background:#f7c96a; } .t-dot-g { background:#4ecca3; }
+.terminal-title { font-size:0.72rem; color:var(--muted); margin-left:0.5rem; }
+.terminal-body { padding:1.25rem; font-size:0.8rem; line-height:2; min-height:180px; }
+.t-line { display:flex; gap:0.5rem; flex-wrap:nowrap; }
+.t-prompt { color:var(--accent2); flex-shrink:0; white-space:nowrap; }
+.t-cmd { color:var(--text); }
+.t-out { color:var(--muted); padding-left:1rem; }
+.t-cursor { display:inline-block; width:8px; height:14px; background:var(--accent); animation:blink 1.2s step-end infinite; vertical-align:middle; margin-left:2px; }
+
+/* ─── Footer ─── */
+footer {
+  position:relative; z-index:1;
+  padding:2rem clamp(1.5rem,8vw,8rem);
+  background-color: var(--bg2);
+  border-top:1px solid var(--border);
+  display:flex; align-items:center; justify-content:center;
+  flex-wrap:wrap; gap:1rem;
+  font-size:0.75rem; color:var(--muted); text-align:center;
+  transition: background-color var(--tr);
+}
+footer a { color:var(--muted); }
+footer a:hover { color:var(--accent2); }
+
+/* ─── Reveal ─── */
+.reveal { opacity:0; transform:translateY(24px); transition:opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+.reveal-delay-1 { transition-delay:0.1s; }
+.reveal-delay-2 { transition-delay:0.2s; }
+.reveal-delay-3 { transition-delay:0.3s; }
+.reveal-delay-4 { transition-delay:0.4s; }
+
+/* ─── Keyframes ─── */
+@keyframes fadeUp  { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn  { from{opacity:0} to{opacity:1} }
+@keyframes float1  { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-30px,20px) scale(1.05)} }
+@keyframes float2  { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(20px,-30px) scale(0.95)} }
+@keyframes scrollPulse { 0%,100%{opacity:0.3;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.2)} }
+@keyframes blink   { 0%,100%{opacity:1} 50%{opacity:0} }
+
+/* ─── Responsive ─── */
+@media (max-width:768px) {
+  .nav-links { display:none; }
+  .nav-links.open {
+    display:flex; flex-direction:column;
+    position:fixed; top:60px; left:0; right:0;
+    background:var(--bg2); border-bottom:1px solid var(--border);
+    padding:1.5rem; gap:1rem; z-index:199;
   }
-  </script>
+  .hamburger { display:flex; }
+  .about-grid, .contacts-inner { grid-template-columns:1fr; gap:2rem; }
+  .hero-meta, .scroll-indicator { display:none; }
+}
+@media (max-width:480px) {
+  .about-stats { grid-template-columns:1fr 1fr; }
+  .projects-grid, .skills-grid { grid-template-columns:1fr; }
+  nav { height:auto; padding-top:0.6rem; padding-bottom:0.6rem; }
+}
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg: #0a0a0a;
-            --surface: #111;
-            --text: #fff;
-            --text-muted: #888;
-            --accent: #3b82f6;
-            --accent-hover: #2563eb;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            opacity: 0;
-            animation: pageLoad 0.5s ease-out 0.1s forwards;
-        }
-
-        @keyframes pageLoad {
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes textFade {
-            0% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            50% {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .text-transition {
-            animation: textFade 0.4s ease-in-out;
-        }
-
-        .controls {
-            position: fixed;
-            top: 24px;
-            right: 24px;
-            z-index: 1000;
-        }
-
-        .control-btn {
-            background: var(--surface);
-            border: 1px solid rgba(255,255,255,0.15);
-            color: var(--text);
-            padding: 10px 16px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .control-btn:hover {
-            border-color: rgba(255,255,255,0.3);
-            transform: translateY(-2px);
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .hero {
-            padding: 120px 0 80px;
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 72px;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            margin-bottom: 24px;
-            line-height: 1.1;
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #fff 0%, #666 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-subtitle {
-            font-size: 20px;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 48px;
-            font-weight: 400;
-        }
-
-        .section {
-            padding: 30px 0;
-        }
-
-        .section-header {
-            margin-bottom: 48px;
-        }
-
-        h2 {
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-muted);
-            margin-bottom: 16px;
-        }
-
-        .tech-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .tech-tag {
-            background: var(--surface);
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 500;
-            border: 1px solid rgba(255,255,255,0.06);
-            transition: all 0.2s;
-            animation: fadeIn 0.6s ease-out both;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .tech-icon {
-            font-size: 18px;
-            line-height: 1;
-        }
-
-        .tech-tag:nth-child(1) { animation-delay: 0.1s; }
-        .tech-tag:nth-child(2) { animation-delay: 0.15s; }
-        .tech-tag:nth-child(3) { animation-delay: 0.2s; }
-        .tech-tag:nth-child(4) { animation-delay: 0.25s; }
-        .tech-tag:nth-child(5) { animation-delay: 0.3s; }
-        .tech-tag:nth-child(6) { animation-delay: 0.35s; }
-        .tech-tag:nth-child(7) { animation-delay: 0.4s; }
-        .tech-tag:nth-child(8) { animation-delay: 0.45s; }
-
-        .tech-tag:hover {
-            border-color: rgba(255,255,255,0.15);
-            transform: translateY(-2px);
-        }
-
-        .education-card {
-            background: var(--surface);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 16px;
-            padding: 32px;
-            animation: fadeInUp 0.6s ease-out both;
-            animation-delay: 0.2s;
-        }
-
-        .education-header {
-            margin-bottom: 24px;
-        }
-
-        .education-header h3 {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            letter-spacing: -0.01em;
-        }
-
-        .institution {
-            font-size: 15px;
-            color: var(--text-muted);
-            margin-bottom: 4px;
-        }
-
-        .education-dates {
-            font-size: 14px;
-            color: #666;
-        }
-
-        .progress-section {
-            margin-top: 24px;
-        }
-
-        .progress-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-
-        .progress-label {
-            font-size: 14px;
-            color: var(--text-muted);
-        }
-
-        .progress-percentage {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--accent);
-        }
-
-        .progress-bar-container {
-            width: 100%;
-            height: 8px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 999px;
-            overflow: hidden;
-        }
-
-        .progress-bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent), #8b5cf6);
-            border-radius: 999px;
-            transition: width 1s ease-out;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            gap: 24px;
-        }
-
-        .testimonial {
-            background: var(--surface);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 16px;
-            padding: 32px;
-            transition: all 0.3s;
-            animation: fadeInUp 0.6s ease-out both;
-        }
-
-        .testimonial:nth-child(1) { animation-delay: 0.1s; }
-        .testimonial:nth-child(2) { animation-delay: 0.2s; }
-        .testimonial:nth-child(3) { animation-delay: 0.3s; }
-        .testimonial:nth-child(4) { animation-delay: 0.4s; }
-
-        .testimonial:hover {
-            border-color: rgba(255,255,255,0.12);
-            transform: translateY(-4px);
-        }
-
-        .testimonial-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 20px;
-        }
-
-        .client-info {
-            display: flex;
-            gap: 16px;
-            align-items: center;
-        }
-
-        .client-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent), #8b5cf6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 18px;
-        }
-
-        .client-details h3 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .project-name {
-            font-size: 14px;
-            color: var(--text-muted);
-        }
-
-        .rating {
-            color: #fbbf24;
-            font-size: 14px;
-        }
-
-        .testimonial-text {
-            color: #ccc;
-            font-size: 15px;
-            line-height: 1.7;
-        }
-
-        footer {
-            padding: 80px 0 40px;
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.06);
-        }
-
-        .footer-cta {
-            margin-bottom: 32px;
-        }
-
-        .footer-cta h3 {
-            font-size: 32px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            letter-spacing: -0.02em;
-        }
-
-        .footer-cta p {
-            color: var(--text-muted);
-            margin-bottom: 32px;
-        }
-
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: transparent;
-            color: var(--text);
-            padding: 14px 28px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 500;
-            border: 1px solid rgba(255,255,255,0.15);
-            transition: all 0.2s;
-        }
-
-        .cta-button:hover {
-            border-color: rgba(255,255,255,0.3);
-            background: rgba(255,255,255,0.03);
-        }
-
-        .footer-text {
-            font-size: 14px;
-            color: var(--text-muted);
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 48px;
-            }
-
-            .hero {
-                padding: 80px 0 60px;
-            }
-
-            .hero-subtitle {
-                font-size: 18px;
-            }
-
-            .section {
-                padding: 60px 0;
-            }
-
-            .testimonial {
-                padding: 24px;
-            }
-
-            .education-card {
-                padding: 24px;
-            }
-
-            .controls {
-                top: 16px;
-                right: 16px;
-            }
-
-            .control-btn {
-                padding: 8px 12px;
-                font-size: 13px;
-            }
-        }
-
-        @media (min-width: 769px) {
-            .testimonials-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-    </style>
+/* ─── Lang switch animation ─── */
+@keyframes langOut {
+  0%   { opacity: 1; transform: translateY(0);   filter: blur(0); }
+  100% { opacity: 0; transform: translateY(-5px); filter: blur(3px); }
+}
+@keyframes langIn {
+  0%   { opacity: 0; transform: translateY(7px);  filter: blur(5px); }
+  65%  { filter: blur(0); }
+  100% { opacity: 1; transform: translateY(0);    filter: blur(0); }
+}
+@keyframes langBtnPop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(0.88); }
+  75%  { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+.lang-out { animation: langOut 0.16s ease forwards; }
+.lang-in  { animation: langIn  0.26s ease forwards; }
+.lang-btn-pop { animation: langBtnPop 0.3s ease forwards; }
+</style>
 </head>
 <body>
-  <header class="controls">
-    <button class="control-btn" id="langBtn">RU</button>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="container">
-        <h1><span class="gradient-text">Ivan Vorobyev</span></h1>
-        <p class="hero-subtitle" data-en="I develop bots, web applications and automate business processes. I specialize in Python and JavaScript ecosystems." data-ru="Разрабатываю боты, веб-приложения и автоматизирую бизнес-процессы. Специализируюсь на Python и JavaScript экосистемах.">I develop bots, web applications and automate business processes. I specialize in Python and JavaScript ecosystems.</p>
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">hu<span>moridze</span></div>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about"    data-i18n="nav.about">About</a></li>
+    <li><a href="#skills"   data-i18n="nav.skills">Skills</a></li>
+    <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+    <li><a href="#contacts" data-i18n="nav.contacts">Contacts</a></li>
+  </ul>
+  <div class="nav-controls">
+    <div class="lang-group">
+      <button class="control-btn active" data-lang-btn="en">EN</button>
+      <button class="control-btn"        data-lang-btn="ru">RU</button>
+      <button class="control-btn"        data-lang-btn="de">DE</button>
+    </div>
+    <button class="control-btn" id="theme-btn">&#9728; Light</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-inner">
+    <div class="hero-tag" data-i18n="hero.tag" data-no-lang-anim>Backend &amp; Bot Developer</div>
+    <h1 class="hero-name">
+      <span class="first">Ivan</span>
+      <span class="last">Vorobiev</span>
+    </h1>
+    <div class="hero-handle"><span>@</span>humoridze</div>
+    <p class="hero-desc" data-i18n="hero.desc" data-no-lang-anim>I build backend systems, automate business workflows via Telegram bots, and craft custom tools. ~4 years of experience across Python, Java, JavaScript, and more.</p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary" data-i18n="hero.cta1" data-no-lang-anim>View Projects</a>
+      <a href="#contacts" class="btn btn-outline"  data-i18n="hero.cta2" data-no-lang-anim>Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-meta">
+    <div class="hero-meta-item" data-i18n="hero.loc">Voronezh, Russia</div>
+    <div class="hero-meta-item" data-i18n="hero.exp">~4 years experience</div>
+    <div class="hero-meta-item" data-i18n="hero.avail">Open to remote</div>
+  </div>
+  <div class="scroll-indicator">
+    <span class="scroll-label" data-i18n="hero.scroll">scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-wrap">
+    <div class="section-header reveal">
+      <span class="section-num">01</span>
+      <h2 class="section-title" data-i18n="about.title">About</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal reveal-delay-1">
+        <p data-i18n="about.p1">I'm a software developer focused on backend development and Telegram bot creation. With roughly 4 years of hands-on experience, I specialise in automating business processes and building integrations between services.</p>
+        <p data-i18n="about.p2">My main area of expertise is Telegram bot development using <strong>Python + aiogram</strong> — booking systems, sales automation, smart reminders. I also build REST API backends, desktop tools with Electron, and full-stack PHP solutions.</p>
+        <div class="about-highlight" data-i18n="about.quote">"Automation is not laziness — it's efficiency at scale."</div>
+        <p data-i18n="about.p3">I'm based in <strong>Voronezh, Russia</strong>, available for remote work and open to interesting projects.</p>
       </div>
-    </section>
+      <div class="about-stats reveal reveal-delay-2">
+        <div class="stat-card"><div class="stat-num">4</div><div class="stat-label" data-i18n="stat.years">Years Experience</div></div>
+        <div class="stat-card"><div class="stat-num">5+</div><div class="stat-label" data-i18n="stat.projects">Projects</div></div>
+        <div class="stat-card"><div class="stat-num">6</div><div class="stat-label" data-i18n="stat.langs">Languages</div></div>
+        <div class="stat-card"><div class="stat-num">&#8734;</div><div class="stat-label" data-i18n="stat.bots">Bots Built</div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 data-en="Languages" data-ru="Языки">Languages</h2>
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-wrap">
+    <div class="section-header reveal">
+      <span class="section-num">02</span>
+      <h2 class="section-title" data-i18n="skills.title">Skills</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-category reveal reveal-delay-1">
+        <div class="skill-cat-title" data-i18n="skills.languages">Languages</div>
+        <div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">Java</span><span class="skill-tag">JavaScript</span><span class="skill-tag">PHP</span><span class="skill-tag">Lua</span><span class="skill-tag">SQL</span></div>
+      </div>
+      <div class="skill-category reveal reveal-delay-2">
+        <div class="skill-cat-title" data-i18n="skills.tech">Technologies</div>
+        <div class="skill-tags"><span class="skill-tag">REST API</span><span class="skill-tag">Telegram Bot API</span><span class="skill-tag">aiogram</span><span class="skill-tag">Electron</span></div>
+      </div>
+      <div class="skill-category reveal reveal-delay-3">
+        <div class="skill-cat-title" data-i18n="skills.databases">Databases</div>
+        <div class="skill-tags"><span class="skill-tag">PostgreSQL</span><span class="skill-tag">MySQL</span><span class="skill-tag">SQLite</span><span class="skill-tag">Redis</span></div>
+      </div>
+      <div class="skill-category reveal reveal-delay-4">
+        <div class="skill-cat-title" data-i18n="skills.tools">Tools</div>
+        <div class="skill-tags"><span class="skill-tag">Git</span><span class="skill-tag">Docker</span><span class="skill-tag">GitHub</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-wrap">
+    <div class="section-header reveal">
+      <span class="section-num">03</span>
+      <h2 class="section-title" data-i18n="projects.title">Projects</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-header"><h3 class="project-title" data-i18n="p1.title">CS:GO Case Website</h3><span class="project-year">2023</span></div>
+        <p class="project-desc" data-i18n="p1.desc">I built the backend for a CS:GO case-opening website — core drop logic, item system, and database structure.</p>
+        <div class="project-tech"><span class="tech-badge">PHP</span><span class="tech-badge">SQL</span></div>
+      </div>
+      <div class="project-card reveal reveal-delay-2">
+        <div class="project-header"><h3 class="project-title" data-i18n="p2.title">Telegram Bot for Car Service</h3><span class="project-year">2025</span></div>
+        <p class="project-desc" data-i18n="p2.desc">I automated a car service: client communication, appointment booking, and service requests — all through a Telegram bot.</p>
+        <div class="project-tech"><span class="tech-badge">Python</span><span class="tech-badge">aiogram</span></div>
+      </div>
+      <div class="project-card reveal reveal-delay-3">
+        <div class="project-header"><h3 class="project-title" data-i18n="p3.title">VPN Key Sales Bot</h3><span class="project-year">2025</span></div>
+        <p class="project-desc" data-i18n="p3.desc">A fully automated bot that handles VPN key distribution — payments, key delivery, and user management with zero manual effort.</p>
+        <div class="project-tech"><span class="tech-badge">Python</span><span class="tech-badge">aiogram</span></div>
+      </div>
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-header"><h3 class="project-title" data-i18n="p4.title">Medicine Reminder Bot</h3><span class="project-year">2025</span></div>
+        <p class="project-desc" data-i18n="p4.desc">I built a bot that reminds users to take their medications on schedule, with flexible per-user time configuration.</p>
+        <div class="project-tech"><span class="tech-badge">Python</span><span class="tech-badge">aiogram</span></div>
+      </div>
+      <div class="project-card reveal reveal-delay-2">
+        <div class="project-header"><h3 class="project-title" data-i18n="p5.title">Minecraft Launcher</h3><span class="project-year">2026</span></div>
+        <p class="project-desc" data-i18n="p5.desc">A public desktop launcher for Minecraft servers — custom UI, version management, and server connectivity built with Electron.</p>
+        <div class="project-tech"><span class="tech-badge">JavaScript</span><span class="tech-badge">Electron</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTS -->
+<section id="contacts">
+  <div class="section-wrap">
+    <div class="section-header reveal">
+      <span class="section-num">04</span>
+      <h2 class="section-title" data-i18n="contacts.title">Contacts</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="contacts-inner">
+      <div class="reveal reveal-delay-1">
+        <p class="contact-intro" data-i18n="contacts.intro">I'm open to freelance projects, remote work, and interesting collaborations. Feel free to reach out via any channel below.</p>
+        <div class="contact-links">
+          <a href="/cdn-cgi/l/email-protection#365e424059534f5a5f505376515b575f5a1855595b" class="contact-link">
+            <div class="contact-link-icon">&#9993;</div>
+            <div class="contact-link-text">
+              <span class="contact-link-label" data-i18n="c.email">Email</span>
+              <span class="contact-link-value"><span class="__cf_email__" data-cfemail="91f9e5e7fef4e8fdf8f7f4d1f6fcf0f8fdbff2fefc">[email&#160;protected]</span></span>
             </div>
-            <div class="tech-list">
-                <div class="tech-tag">🐍 Python</div>
-                <div class="tech-tag">⚡ JavaScript</div>
-                <div class="tech-tag">🚀 Java</div>
-                <div class="tech-tag">🐘 PHP</div>
-                <div class="tech-tag">🌙 Lua</div>
-                <div class="tech-tag">🎮 GLua</div>
-                <div class="tech-tag">🎨 HTML5</div>
-                <div class="tech-tag">💎 CSS3</div>
-                <div class="tech-tag">📊 SQL</div>
+          </a>
+          <a href="https://t.me/legendagachimuchi" target="_blank" rel="noopener" class="contact-link">
+            <div class="contact-link-icon">&#9992;</div>
+            <div class="contact-link-text">
+              <span class="contact-link-label">Telegram</span>
+              <span class="contact-link-value">@legendagachimuchi</span>
             </div>
+          </a>
+          <a href="https://github.com/humoridze" target="_blank" rel="noopener" class="contact-link">
+            <div class="contact-link-icon">&#8997;</div>
+            <div class="contact-link-text">
+              <span class="contact-link-label">GitHub</span>
+              <span class="contact-link-value">github.com/humoridze</span>
+            </div>
+          </a>
         </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 data-en="Technologies" data-ru="Технологии">Technologies</h2>
-            </div>
-            <div class="tech-list">
-                <div class="tech-tag">🟢 Node.js</div>
-                <div class="tech-tag">🗄️ MySQL</div>
-                <div class="tech-tag">💾 SQLite</div>
-                <div class="tech-tag">🔧 Git</div>
-                <div class="tech-tag">🐳 Docker</div>
-            </div>
+      </div>
+      <div class="contact-terminal reveal reveal-delay-2">
+        <div class="terminal-bar">
+          <div class="t-dot t-dot-r"></div>
+          <div class="t-dot t-dot-y"></div>
+          <div class="t-dot t-dot-g"></div>
+          <span class="terminal-title">ivan@dev: ~</span>
         </div>
-    </section>
+        <div class="terminal-body" id="terminal-body"></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 data-en="Education" data-ru="Образование">Education</h2>
-            </div>
-            <div class="education-card">
-                <div class="education-header">
-                    <h3 data-en="Information Systems and Programming" data-ru="Информационные системы и программирование">Information Systems and Programming</h3>
-                    <p class="institution" data-en="Voronezh Institute of High Technologies" data-ru="Воронежского Института Высоких Технологий">Voronezh Institute of High Technologies</p>
-                    <p class="education-dates" data-en="August 2025 — June 2028 • 2 years 10 months" data-ru="Август 2025 — Июнь 2028 • 2 года 10 месяцев">August 2025 — June 2028 • 2 years 10 months</p>
-                </div>
-                <div class="progress-section">
-                    <div class="progress-header">
-                        <span class="progress-label" data-en="Study progress" data-ru="Прогресс обучения">Study progress</span>
-                        <span class="progress-percentage" id="progressPercent">0%</span>
-                    </div>
-                    <div class="progress-bar-container">
-                        <div class="progress-bar-fill" id="progressBar" style="width: 0%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- FOOTER -->
+<footer>
+  <span>&#169; 2026 Ivan Vorobiev &middot; <a href="https://github.com/humoridze" target="_blank">@humoridze</a></span>
+</footer>
 
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 data-en="Testimonials" data-ru="Отзывы">Testimonials</h2>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial">
-                    <div class="testimonial-header">
-                        <div class="client-info">
-                            <div class="client-avatar">I</div>
-                            <div class="client-details">
-                                <h3 data-en="Igor" data-ru="Игорь">Igor</h3>
-                                <div class="project-name">CS:GO Market Parser</div>
-                            </div>
-                        </div>
-                        <div class="rating">★★★★★</div>
-                    </div>
-                    <p class="testimonial-text" data-en="Ivan did a very complex job in the shortest possible time — found and fixed a critical bug in the CS:GO market parser. He described every step in the chat, showing exactly what he was doing. The API was unstable, but Ivan completely redesigned the request processing system. Now the parser works without failures. I recommend it to everyone!" data-ru="Иван сделал очень сложную работу в максимально короткие сроки — нашел и исправил критическую ошибку в парсере CS:GO маркета. Каждый свой шаг расписывал в чате, показывал что именно делает. API работал нестабильно, но Иван полностью переработал систему обработки запросов. Теперь парсер работает без сбоев. Всем рекомендую!">Ivan did a very complex job in the shortest possible time — found and fixed a critical bug in the CS:GO market parser. He described every step in the chat, showing exactly what he was doing. The API was unstable, but Ivan completely redesigned the request processing system. Now the parser works without failures. I recommend it to everyone!</p>
-                </div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* ════════════════════════════════
+   TRANSLATIONS
+════════════════════════════════ */
+var T = {
+  en: {
+    "nav.about":"About","nav.skills":"Skills","nav.projects":"Projects","nav.contacts":"Contacts",
+    "hero.tag":"Backend & Bot Developer",
+    "hero.desc":"I build backend systems, automate business workflows via Telegram bots, and craft custom tools. ~4 years of experience across Python, Java, JavaScript, and more.",
+    "hero.cta1":"View Projects","hero.cta2":"Get in Touch",
+    "hero.loc":"Voronezh, Russia","hero.exp":"~4 years experience","hero.avail":"Open to remote",
+    "hero.scroll":"scroll",
+    "about.title":"About",
+    "about.p1":"I'm a software developer focused on backend development and Telegram bot creation. With roughly 4 years of hands-on experience, I specialise in automating business processes and building integrations between services.",
+    "about.p2":"My main area of expertise is Telegram bot development using <strong>Python + aiogram</strong> — booking systems, sales automation, smart reminders. I also build REST API backends, desktop tools with Electron, and full-stack PHP solutions.",
+    "about.quote":"\"Automation is not laziness — it's efficiency at scale.\"",
+    "about.p3":"I'm based in <strong>Voronezh, Russia</strong>, available for remote work and open to interesting projects.",
+    "stat.years":"Years Experience","stat.projects":"Projects","stat.langs":"Languages","stat.bots":"Bots Built",
+    "skills.title":"Skills","skills.languages":"Languages","skills.tech":"Technologies","skills.databases":"Databases","skills.tools":"Tools",
+    "projects.title":"Projects",
+    "p1.title":"CS:GO Case Website",
+    "p1.desc":"I built the backend for a CS:GO case-opening website — core drop logic, item system, and database structure.",
+    "p2.title":"Telegram Bot for Car Service",
+    "p2.desc":"I automated a car service: client communication, appointment booking, and service requests — all through a Telegram bot.",
+    "p3.title":"VPN Key Sales Bot",
+    "p3.desc":"A fully automated bot that handles VPN key distribution — payments, key delivery, and user management with zero manual effort.",
+    "p4.title":"Medicine Reminder Bot",
+    "p4.desc":"I built a bot that reminds users to take their medications on schedule, with flexible per-user time configuration.",
+    "p5.title":"Minecraft Launcher",
+    "p5.desc":"A public desktop launcher for Minecraft servers — custom UI, version management, and server connectivity built with Electron.",
+    "contacts.title":"Contacts",
+    "contacts.intro":"I'm open to freelance projects, remote work, and interesting collaborations. Feel free to reach out via any channel below.",
+    "c.email":"Email",
+    "footer.made":"Built with \u2764 & caffeine",
+    "term":[
+      ["p","whoami"],["o","Ivan Vorobiev (humoridze)"],
+      ["p","cat role.txt"],["o","Backend Dev / Telegram Bot Dev"],
+      ["p","ls skills/"],["o","Python  Java  JS  PHP  aiogram  Docker"],
+      ["p","echo $STATUS"],["o","\uD83D\uDFE2 Available for work"],
+      ["p","_"]
+    ]
+  },
+  ru: {
+    "nav.about":"\u041e\u0431\u043e \u043c\u043d\u0435","nav.skills":"\u041d\u0430\u0432\u044b\u043a\u0438","nav.projects":"\u041f\u0440\u043e\u0435\u043a\u0442\u044b","nav.contacts":"\u041a\u043e\u043d\u0442\u0430\u043a\u0442\u044b",
+    "hero.tag":"Backend & Bot \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a",
+    "hero.desc":"\u042f \u0440\u0430\u0437\u0440\u0430\u0431\u0430\u0442\u044b\u0432\u0430\u044e backend-\u0441\u0438\u0441\u0442\u0435\u043c\u044b, \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0438\u0440\u0443\u044e \u0431\u0438\u0437\u043d\u0435\u0441-\u043f\u0440\u043e\u0446\u0435\u0441\u0441\u044b \u0447\u0435\u0440\u0435\u0437 Telegram-\u0431\u043e\u0442\u044b \u0438 \u0441\u043e\u0437\u0434\u0430\u044e \u043a\u0430\u0441\u0442\u043e\u043c\u043d\u044b\u0435 \u0438\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u044b. ~4 \u0433\u043e\u0434\u0430 \u043e\u043f\u044b\u0442\u0430.",
+    "hero.cta1":"\u041f\u0440\u043e\u0435\u043a\u0442\u044b","hero.cta2":"\u041d\u0430\u043f\u0438\u0441\u0430\u0442\u044c",
+    "hero.loc":"\u0412\u043e\u0440\u043e\u043d\u0435\u0436, \u0420\u043e\u0441\u0441\u0438\u044f","hero.exp":"~4 \u0433\u043e\u0434\u0430 \u043e\u043f\u044b\u0442\u0430","hero.avail":"\u0423\u0434\u0430\u043b\u0451\u043d\u043d\u0430\u044f \u0440\u0430\u0431\u043e\u0442\u0430",
+    "hero.scroll":"\u043b\u0438\u0441\u0442\u0430\u0442\u044c",
+    "about.title":"\u041e\u0431\u043e \u043c\u043d\u0435",
+    "about.p1":"\u042f \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a \u041f\u041e \u0441 \u0444\u043e\u043a\u0443\u0441\u043e\u043c \u043d\u0430 backend-\u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0443 \u0438 \u0441\u043e\u0437\u0434\u0430\u043d\u0438\u0435 Telegram-\u0431\u043e\u0442\u043e\u0432. \u041e\u043a\u043e\u043b\u043e 4 \u043b\u0435\u0442 \u043f\u0440\u0430\u043a\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0433\u043e \u043e\u043f\u044b\u0442\u0430 \u0432 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u0438 \u0431\u0438\u0437\u043d\u0435\u0441-\u043f\u0440\u043e\u0446\u0435\u0441\u0441\u043e\u0432 \u0438 \u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438 \u0441\u0435\u0440\u0432\u0438\u0441\u043e\u0432.",
+    "about.p2":"\u041c\u043e\u044f \u043e\u0441\u043d\u043e\u0432\u043d\u0430\u044f \u0441\u043f\u0435\u0446\u0438\u0430\u043b\u0438\u0437\u0430\u0446\u0438\u044f \u2014 \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 Telegram-\u0431\u043e\u0442\u043e\u0432 \u043d\u0430 <strong>Python + aiogram</strong>: \u0441\u0438\u0441\u0442\u0435\u043c\u044b \u0431\u0440\u043e\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f, \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u043f\u0440\u043e\u0434\u0430\u0436, \u0443\u043c\u043d\u044b\u0435 \u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u044f. \u0422\u0430\u043a\u0436\u0435 \u0441\u043e\u0437\u0434\u0430\u044e REST API \u0431\u044d\u043a\u0435\u043d\u0434\u044b, desktop-\u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u044f \u043d\u0430 Electron \u0438 PHP-\u0440\u0435\u0448\u0435\u043d\u0438\u044f.",
+    "about.quote":"\u00ab\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u2014 \u044d\u0442\u043e \u043d\u0435 \u043b\u0435\u043d\u044c, \u044d\u0442\u043e \u044d\u0444\u0444\u0435\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u044c \u0432 \u043c\u0430\u0441\u0448\u0442\u0430\u0431\u0435.\u00bb",
+    "about.p3":"\u042f \u043d\u0430\u0445\u043e\u0436\u0443\u0441\u044c \u0432 <strong>\u0412\u043e\u0440\u043e\u043d\u0435\u0436\u0435, \u0420\u043e\u0441\u0441\u0438\u044f</strong>. \u041e\u0442\u043a\u0440\u044b\u0442 \u043a \u0443\u0434\u0430\u043b\u0451\u043d\u043d\u043e\u0439 \u0440\u0430\u0431\u043e\u0442\u0435 \u0438 \u0438\u043d\u0442\u0435\u0440\u0435\u0441\u043d\u044b\u043c \u043f\u0440\u043e\u0435\u043a\u0442\u0430\u043c.",
+    "stat.years":"\u041b\u0435\u0442 \u043e\u043f\u044b\u0442\u0430","stat.projects":"\u041f\u0440\u043e\u0435\u043a\u0442\u043e\u0432","stat.langs":"\u042f\u0437\u044b\u043a\u043e\u0432","stat.bots":"\u0411\u043e\u0442\u043e\u0432 \u0441\u043e\u0437\u0434\u0430\u043d\u043e",
+    "skills.title":"\u041d\u0430\u0432\u044b\u043a\u0438","skills.languages":"\u042f\u0437\u044b\u043a\u0438 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f","skills.tech":"\u0422\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u0438","skills.databases":"\u0411\u0430\u0437\u044b \u0434\u0430\u043d\u043d\u044b\u0445","skills.tools":"\u0418\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u044b",
+    "projects.title":"\u041f\u0440\u043e\u0435\u043a\u0442\u044b",
+    "p1.title":"\u0421\u0430\u0439\u0442 \u043a\u0435\u0439\u0441\u043e\u0432 CS:GO",
+    "p1.desc":"\u042f \u043d\u0430\u043f\u0438\u0441\u0430\u043b backend \u0434\u043b\u044f \u0441\u0430\u0439\u0442\u0430 \u043e\u0442\u043a\u0440\u044b\u0442\u0438\u044f \u043a\u0435\u0439\u0441\u043e\u0432 CS:GO \u2014 \u043b\u043e\u0433\u0438\u043a\u0430 \u0434\u0440\u043e\u043f\u043e\u0432, \u0441\u0438\u0441\u0442\u0435\u043c\u0430 \u043f\u0440\u0435\u0434\u043c\u0435\u0442\u043e\u0432 \u0438 \u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430 \u0411\u0414.",
+    "p2.title":"Telegram-\u0431\u043e\u0442 \u0434\u043b\u044f \u0430\u0432\u0442\u043e\u0441\u0435\u0440\u0432\u0438\u0441\u0430",
+    "p2.desc":"\u042f \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0438\u0440\u043e\u0432\u0430\u043b \u0430\u0432\u0442\u043e\u0441\u0435\u0440\u0432\u0438\u0441: \u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u0441 \u043a\u043b\u0438\u0435\u043d\u0442\u0430\u043c\u0438, \u0437\u0430\u043f\u0438\u0441\u044c \u043d\u0430 \u043e\u0431\u0441\u043b\u0443\u0436\u0438\u0432\u0430\u043d\u0438\u0435 \u0438 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0437\u0430\u044f\u0432\u043e\u043a \u0447\u0435\u0440\u0435\u0437 Telegram.",
+    "p3.title":"\u0411\u043e\u0442 \u043f\u0440\u043e\u0434\u0430\u0436\u0438 VPN-\u043a\u043b\u044e\u0447\u0435\u0439",
+    "p3.desc":"\u041f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0439 \u0431\u043e\u0442 \u0434\u043b\u044f \u0440\u0430\u0437\u0434\u0430\u0447\u0438 VPN-\u043a\u043b\u044e\u0447\u0435\u0439 \u2014 \u043f\u0440\u0438\u0451\u043c \u043e\u043f\u043b\u0430\u0442\u044b, \u0432\u044b\u0434\u0430\u0447\u0430 \u043a\u043b\u044e\u0447\u0435\u0439 \u0438 \u0443\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f\u043c\u0438 \u0431\u0435\u0437 \u0440\u0443\u0447\u043d\u043e\u0433\u043e \u0432\u043c\u0435\u0448\u0430\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u0430.",
+    "p4.title":"\u0411\u043e\u0442-\u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u043b\u043a\u0430 \u043e \u043b\u0435\u043a\u0430\u0440\u0441\u0442\u0432\u0430\u0445",
+    "p4.desc":"\u042f \u0441\u043e\u0437\u0434\u0430\u043b \u0431\u043e\u0442\u0430, \u043a\u043e\u0442\u043e\u0440\u044b\u0439 \u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u0435\u0442 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f\u043c \u043e \u043f\u0440\u0438\u0451\u043c\u0435 \u043b\u0435\u043a\u0430\u0440\u0441\u0442\u0432 \u043f\u043e \u0440\u0430\u0441\u043f\u0438\u0441\u0430\u043d\u0438\u044e \u0441 \u0433\u0438\u0431\u043a\u043e\u0439 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u043e\u0439 \u0432\u0440\u0435\u043c\u0435\u043d\u0438.",
+    "p5.title":"Minecraft Launcher",
+    "p5.desc":"\u041f\u0443\u0431\u043b\u0438\u0447\u043d\u044b\u0439 desktop-\u043b\u0430\u0443\u043d\u0447\u0435\u0440 \u0434\u043b\u044f Minecraft-\u0441\u0435\u0440\u0432\u0435\u0440\u043e\u0432 \u2014 \u043a\u0430\u0441\u0442\u043e\u043c\u043d\u044b\u0439 \u0438\u043d\u0442\u0435\u0440\u0444\u0435\u0439\u0441, \u0443\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0432\u0435\u0440\u0441\u0438\u044f\u043c\u0438 \u0438 \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0435 \u043a \u0441\u0435\u0440\u0432\u0435\u0440\u0430\u043c \u043d\u0430 Electron.",
+    "contacts.title":"\u041a\u043e\u043d\u0442\u0430\u043a\u0442\u044b",
+    "contacts.intro":"\u041e\u0442\u043a\u0440\u044b\u0442 \u043a \u0444\u0440\u0438\u043b\u0430\u043d\u0441-\u043f\u0440\u043e\u0435\u043a\u0442\u0430\u043c, \u0443\u0434\u0430\u043b\u0451\u043d\u043d\u043e\u0439 \u0440\u0430\u0431\u043e\u0442\u0435 \u0438 \u0438\u043d\u0442\u0435\u0440\u0435\u0441\u043d\u043e\u043c\u0443 \u0441\u043e\u0442\u0440\u0443\u0434\u043d\u0438\u0447\u0435\u0441\u0442\u0432\u0443. \u041f\u0438\u0448\u0438\u0442\u0435 \u043c\u043d\u0435 \u043b\u044e\u0431\u044b\u043c \u0443\u0434\u043e\u0431\u043d\u044b\u043c \u0441\u043f\u043e\u0441\u043e\u0431\u043e\u043c.",
+    "c.email":"\u042d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u0430\u044f \u043f\u043e\u0447\u0442\u0430",
+    "footer.made":"\u0421\u0434\u0435\u043b\u0430\u043d\u043e \u0441 \u2764 \u0438 \u043a\u043e\u0444\u0435",
+    "term":[
+      ["p","whoami"],["o","\u0418\u0432\u0430\u043d \u0412\u043e\u0440\u043e\u0431\u044c\u0435\u0432 (humoridze)"],
+      ["p","cat role.txt"],["o","Backend / Telegram Bot \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a"],
+      ["p","ls skills/"],["o","Python  Java  JS  PHP  aiogram  Docker"],
+      ["p","echo $STATUS"],["o","\uD83D\uDFE2 \u041e\u0442\u043a\u0440\u044b\u0442 \u043a \u0441\u043e\u0442\u0440\u0443\u0434\u043d\u0438\u0447\u0435\u0441\u0442\u0432\u0443"],
+      ["p","_"]
+    ]
+  },
+  de: {
+    "nav.about":"\u00dcber mich","nav.skills":"Skills","nav.projects":"Projekte","nav.contacts":"Kontakt",
+    "hero.tag":"Backend & Bot Entwickler",
+    "hero.desc":"Ich entwickle Backend-Systeme, automatisiere Gesch\u00e4ftsprozesse \u00fcber Telegram-Bots und baue individuelle Tools. ~4 Jahre Erfahrung mit Python, Java, JavaScript und mehr.",
+    "hero.cta1":"Projekte ansehen","hero.cta2":"Kontakt aufnehmen",
+    "hero.loc":"Woronesch, Russland","hero.exp":"~4 Jahre Erfahrung","hero.avail":"Remote verf\u00fcgbar",
+    "hero.scroll":"scrollen",
+    "about.title":"\u00dcber mich",
+    "about.p1":"Ich bin Softwareentwickler mit Schwerpunkt auf Backend-Entwicklung und Telegram-Bot-Erstellung. Mit rund 4 Jahren praktischer Erfahrung spezialisiere ich mich auf die Automatisierung von Gesch\u00e4ftsprozessen und die Integration von Diensten.",
+    "about.p2":"Mein Hauptgebiet ist die Telegram-Bot-Entwicklung mit <strong>Python + aiogram</strong>: Buchungssysteme, Verkaufsautomatisierung und intelligente Erinnerungen. Ich baue auch REST-API-Backends, Desktop-Tools mit Electron und PHP-L\u00f6sungen.",
+    "about.quote":"\u201eAutomatisierung ist keine Faulheit \u2014 es ist Effizienz im gro\u00dfen Ma\u00dfstab.\u201c",
+    "about.p3":"Ich lebe in <strong>Woronesch, Russland</strong> und bin offen f\u00fcr Remote-Arbeit und interessante Projekte.",
+    "stat.years":"Jahre Erfahrung","stat.projects":"Projekte","stat.langs":"Sprachen","stat.bots":"Bots erstellt",
+    "skills.title":"Skills","skills.languages":"Programmiersprachen","skills.tech":"Technologien","skills.databases":"Datenbanken","skills.tools":"Werkzeuge",
+    "projects.title":"Projekte",
+    "p1.title":"CS:GO Case-Website",
+    "p1.desc":"Ich habe das Backend f\u00fcr eine CS:GO Case-Opening-Website entwickelt \u2014 Kernlogik, Item-Drop-System und Datenbankstruktur.",
+    "p2.title":"Telegram-Bot f\u00fcr Autowerkstatt",
+    "p2.desc":"Ich habe eine Autowerkstatt automatisiert: Kundenkommunikation, Terminbuchung und Serviceanfragen \u00fcber Telegram.",
+    "p3.title":"VPN-Schl\u00fcssel-Verkaufsbot",
+    "p3.desc":"Ein vollautomatischer Bot f\u00fcr die Verteilung von VPN-Schl\u00fcsseln \u2014 Zahlungen, Schl\u00fcsselausgabe und Benutzerverwaltung ohne manuellen Eingriff.",
+    "p4.title":"Medikamenten-Erinnerungsbot",
+    "p4.desc":"Ich habe einen Bot entwickelt, der Nutzer an ihre Medikamente erinnert \u2014 mit flexibler Zeitplanung pro Nutzer.",
+    "p5.title":"Minecraft Launcher",
+    "p5.desc":"Ein \u00f6ffentlicher Desktop-Launcher f\u00fcr Minecraft-Server \u2014 eigene UI, Versionsverwaltung und Serverkonnektivit\u00e4t mit Electron.",
+    "contacts.title":"Kontakt",
+    "contacts.intro":"Ich bin offen f\u00fcr Freelance-Projekte, Remote-Arbeit und interessante Kooperationen. Meldet euch gerne \u00fcber einen der unten stehenden Kan\u00e4le.",
+    "c.email":"E-Mail",
+    "footer.made":"Mit \u2764 & Kaffee gebaut",
+    "term":[
+      ["p","whoami"],["o","Ivan Vorobiev (humoridze)"],
+      ["p","cat role.txt"],["o","Backend / Telegram Bot Entwickler"],
+      ["p","ls skills/"],["o","Python  Java  JS  PHP  aiogram  Docker"],
+      ["p","echo $STATUS"],["o","\uD83D\uDFE2 Verf\u00fcgbar f\u00fcr Projekte"],
+      ["p","_"]
+    ]
+  }
+};
 
-                <div class="testimonial">
-                    <div class="testimonial-header">
-                        <div class="client-info">
-                            <div class="client-avatar">S</div>
-                            <div class="client-details">
-                                <h3 data-en="Sergey" data-ru="Сергей">Sergey</h3>
-                                <div class="project-name" data-en="Tire Service Bot" data-ru="Бот для шинного сервиса">Tire Service Bot</div>
-                            </div>
-                        </div>
-                        <div class="rating">★★★★★</div>
-                    </div>
-                    <p class="testimonial-text" data-en="Ivan fully implemented the Telegram bot functionality according to the requirements for automating calculations in our tire service. He provided a working solution and a test version that we could check personally. Very impressed with the speed and quality of work. The bot helped automate calculations, which significantly simplified our business processes." data-ru="Иван полностью реализовал функционал Telegram-бота согласно ТЗ для автоматизации расчетов в нашем шинном сервисе. Предоставил рабочее решение и тестовую версию, которую мы могли проверить лично. Очень впечатлен оперативностью и качеством работы. Бот помог автоматизировать расчеты, что значительно упростило наши бизнес-процессы.">Ivan fully implemented the Telegram bot functionality according to the requirements for automating calculations in our tire service. He provided a working solution and a test version that we could check personally. Very impressed with the speed and quality of work. The bot helped automate calculations, which significantly simplified our business processes.</p>
-                </div>
+/* ════════════════════════════════
+   APP
+════════════════════════════════ */
+var currentLang = 'en';
+var currentTheme = 'dark';
+var langSwitchTimer = null;
 
-                <div class="testimonial">
-                    <div class="testimonial-header">
-                        <div class="client-info">
-                            <div class="client-avatar">S</div>
-                            <div class="client-details">
-                                <h3 data-en="Said" data-ru="Саид">Said</h3>
-                                <div class="project-name" data-en="VPN Service" data-ru="VPN-сервис">VPN Service</div>
-                            </div>
-                        </div>
-                        <div class="rating">★★★★★</div>
-                    </div>
-                    <p class="testimonial-text" data-en="Ivan developed a fully functional Telegram bot for automating the sale and management of VPN subscriptions. The bot is integrated with the payment system and VPN server control panel. An authentication system, flexible tariff system, automatic VPN key generation and convenient user interface have been implemented. Thanks to his work, we received a fully automated VPN access sales system." data-ru="Иван разработал полнофункциональный Telegram-бот для автоматизации продажи и управления VPN-подписками. Бот интегрирован с платежной системой и панелью управления VPN-сервером. Реализована система аутентификации, гибкая система тарифов, автоматическая генерация VPN-ключей и удобный пользовательский интерфейс. Благодаря его работе мы получили полностью автоматизированную систему продажи VPN-доступа.">Ivan developed a fully functional Telegram bot for automating the sale and management of VPN subscriptions. The bot is integrated with the payment system and VPN server control panel. An authentication system, flexible tariff system, automatic VPN key generation and convenient user interface have been implemented. Thanks to his work, we received a fully automated VPN access sales system.</p>
-                </div>
+function applyLang(lang, animated) {
+  if (lang === currentLang && animated) return;
+  var t = T[lang];
+  var els = Array.from(document.querySelectorAll('[data-i18n]:not([data-no-lang-anim])'));
+  var allI18n = Array.from(document.querySelectorAll('[data-i18n]'));
 
-                <div class="testimonial">
-                    <div class="testimonial-header">
-                        <div class="client-info">
-                            <div class="client-avatar">Y</div>
-                            <div class="client-details">
-                                <h3 data-en="Yaroslav" data-ru="Ярослав">Yaroslav</h3>
-                                <div class="project-name" data-en="Medical Assistant" data-ru="Медицинский помощник">Medical Assistant</div>
-                            </div>
-                        </div>
-                        <div class="rating">★★★★★</div>
-                    </div>
-                    <p class="testimonial-text" data-en="Ivan created a bot for reminding you to take pills with a very convenient and understandable interface. You can set the time for each medicine, the bot sends reminders with the name of the drug and dosage. There is an option to mark the intake or postpone the notification. It is really well done and thought out to the smallest detail." data-ru="Иван создал бота для напоминания о приеме таблеток с очень удобным и понятным интерфейсом. Можно настроить время для каждого лекарства, бот присылает напоминания с названием препарата и дозировкой. Есть возможность отметить приём или отложить уведомление. Реализовано действительно качественно и продумано до мелочей.">Ivan created a bot for reminding you to take pills with a very convenient and understandable interface. You can set the time for each medicine, the bot sends reminders with the name of the drug and dosage. There is an option to mark the intake or postpone the notification. It is really well done and thought out to the smallest detail.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  if (!animated) {
+    /* silent first render */
+    currentLang = lang;
+    allI18n.forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+    document.querySelectorAll('[data-lang-btn]').forEach(function(btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-lang-btn') === lang);
+    });
+    renderTerminal(lang);
+    document.documentElement.lang = lang;
+    return;
+  }
 
-    <footer>
-        <div class="container">
-            <div class="footer-cta">
-                <h3 data-en="Ready to discuss the project?" data-ru="Готовы обсудить проект?">Ready to discuss the project?</h3>
-                <p data-en="Contact me on Telegram or by email to discuss details and costs" data-ru="Свяжитесь со мной в Telegram или по email для обсуждения деталей и стоимости">Contact me on Telegram or by email to discuss details and costs</p>
-                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-                    <a href="https://t.me/eyzenberg" class="cta-button" target="_blank">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21.198 2.433a2.242 2.242 0 0 0-1.022.215l-8.609 3.33c-2.068.8-4.133 1.598-5.724 2.21a405.15 405.15 0 0 1-2.849 1.09c-.42.147-.99.332-1.473.901-.728.968.193 1.798.919 2.286 1.61.516 3.275 1.009 4.886 1.524.214.083.412.156.69.12.417-.067.667-.36.933-.62.913-.89 1.815-1.788 2.706-2.697 1.878-1.914 3.757-3.827 5.672-5.703.525-.515 1.084.675.588 1.17-2.654 2.646-5.313 5.287-7.97 7.933-.443.443-.682.84-.547 1.465.343 1.593.695 3.182 1.035 4.775.133.619.222 1.21.878 1.619.447.278.98.38 1.486.262.923-.215 1.344-1.15 1.694-1.963.742-1.727 1.473-3.46 2.204-5.192.731-1.732 1.462-3.464 2.168-5.205a75.88 75.88 0 0 0 1.292-3.663c.166-.555.466-1.382-.1-1.87-.241-.208-.54-.31-.846-.336z"/>
-                        </svg>
-                        <span data-en="Write on Telegram" data-ru="Написать в Telegram">Write on Telegram</span>
-                    </a>
-                    <a href="mailto:htvoeylife@gmail.com" class="cta-button">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>
-                        <span data-en="Write Email" data-ru="Написать Email">Write Email</span>
-                    </a>
-                </div>
-            </div>
-            <p class="footer-text" data-en="© 2025 Ivan Vorobyev — Developer" data-ru="© 2025 Иван Воробьев — Developer">© 2025 Ivan Vorobyev — Developer</p>
-        </div>
-    </footer>
+  /* cancel any pending switch */
+  if (langSwitchTimer) { clearTimeout(langSwitchTimer); langSwitchTimer = null; }
 
-  <script>
-    let currentLang='en';
-    function toggleLanguage(){
-      currentLang=currentLang==='en'?'ru':'en';
-      document.documentElement.lang=currentLang;
-      const elements=document.querySelectorAll('[data-en][data-ru]');
-      elements.forEach(el=>{
-        el.classList.add('text-transition');
-        setTimeout(()=>{el.textContent=el.getAttribute(`data-${currentLang}`);},200);
-        setTimeout(()=>{el.classList.remove('text-transition');},400);
+  /* step 1 — fade out */
+  els.forEach(function(el) {
+    el.classList.remove('lang-in');
+    el.classList.add('lang-out');
+  });
+
+  langSwitchTimer = setTimeout(function() {
+    langSwitchTimer = null;
+    /* step 2 — swap text for ALL i18n elements */
+    currentLang = lang;
+    allI18n.forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+    els.forEach(function(el) {
+      el.classList.remove('lang-out');
+    });
+    document.querySelectorAll('[data-lang-btn]').forEach(function(btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-lang-btn') === lang);
+    });
+    renderTerminal(lang);
+    document.documentElement.lang = lang;
+
+    /* step 3 — staggered fade in */
+    els.forEach(function(el, i) {
+      el.classList.add('lang-in');
+      el.style.animationDelay = Math.min(i * 0.018, 0.18) + 's';
+    });
+
+    /* cleanup */
+    setTimeout(function() {
+      els.forEach(function(el) {
+        el.classList.remove('lang-in');
+        el.style.animationDelay = '';
       });
-      const langBtn=document.getElementById('langBtn');
-      langBtn.classList.add('text-transition');
-      setTimeout(()=>{langBtn.innerHTML=currentLang==='en'?'RU':'EN';},200);
-      setTimeout(()=>{langBtn.classList.remove('text-transition');},400);
+    }, 500);
+
+  }, 170);
+}
+
+function renderTerminal(lang) {
+  var lines = T[lang].term;
+  var body = document.getElementById('terminal-body');
+  if (!body) return;
+  body.innerHTML = '';
+  lines.forEach(function(line) {
+    var div = document.createElement('div');
+    div.className = 't-line';
+    if (line[0] === 'p') {
+      var cmd = line[1] === '_' ? '<span class="t-cursor"></span>' : line[1];
+      div.innerHTML = '<span class="t-prompt">ivan@dev:~$</span><span class="t-cmd">&nbsp;' + cmd + '</span>';
+    } else {
+      div.innerHTML = '<span class="t-out">' + line[1] + '</span>';
     }
-    function updateEducationProgress(){
-      const startDate=new Date('2025-08-01');
-      const endDate=new Date('2028-06-30');
-      const currentDate=new Date();
-      const total=endDate-startDate;
-      const elapsed=currentDate-startDate;
-      let progress=(elapsed/total)*100;
-      progress=Math.max(0,Math.min(100,progress));
-      const bar=document.getElementById('progressBar');
-      const percent=document.getElementById('progressPercent');
-      if(bar&&percent){
-        setTimeout(()=>{
-          bar.style.width=progress.toFixed(1)+'%';
-          percent.textContent=progress.toFixed(1)+'%';
-        },500);
-      }
-    }
-    document.getElementById('langBtn').addEventListener('click',toggleLanguage);
-    window.addEventListener('load',updateEducationProgress);
-  </script>
+    body.appendChild(div);
+  });
+}
+
+function applyTheme(theme) {
+  currentTheme = theme;
+  document.documentElement.setAttribute('data-theme', theme);
+  var btn = document.getElementById('theme-btn');
+  if (btn) btn.textContent = theme === 'dark' ? '☀ Light' : '☾ Dark';
+}
+
+/* Init on DOM ready */
+document.addEventListener('DOMContentLoaded', function() {
+
+  /* theme */
+  document.getElementById('theme-btn').addEventListener('click', function() {
+    applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+  });
+
+  /* lang */
+  document.querySelectorAll('[data-lang-btn]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      /* pop animation on the button */
+      btn.classList.add('lang-btn-pop');
+      btn.addEventListener('animationend', function() {
+        btn.classList.remove('lang-btn-pop');
+      }, { once: true });
+      applyLang(btn.getAttribute('data-lang-btn'), true);
+    });
+  });
+
+  /* hamburger */
+  var ham = document.getElementById('hamburger');
+  var nl  = document.getElementById('nav-links');
+  if (ham && nl) {
+    ham.addEventListener('click', function() {
+      ham.classList.toggle('open');
+      nl.classList.toggle('open');
+    });
+    nl.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        ham.classList.remove('open');
+        nl.classList.remove('open');
+      });
+    });
+  }
+
+  /* navbar scroll tint */
+  window.addEventListener('scroll', function() {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  /* scroll reveal */
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('visible'); });
+  }
+
+  /* project card glow */
+  document.querySelectorAll('.project-card').forEach(function(card) {
+    card.addEventListener('mousemove', function(e) {
+      var r = card.getBoundingClientRect();
+      card.style.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+      card.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+    });
+  });
+
+  /* initial lang */
+  applyLang('en', false);
+
+});
+</script>
 </body>
 </html>
