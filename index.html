@@ -937,6 +937,24 @@ function applyTheme(theme) {
   if (btn) btn.textContent = theme === 'dark' ? '☀ Light' : '☾ Dark';
 }
 
+function scrollToSection(targetId) {
+  var target = document.getElementById(targetId);
+  if (!target) return;
+
+  var navbar = document.getElementById('navbar');
+  var navOffset = navbar ? navbar.offsetHeight : 0;
+  var top = target.getBoundingClientRect().top + window.pageYOffset - navOffset;
+
+  window.scrollTo({
+    top: Math.max(top, 0),
+    behavior: 'smooth'
+  });
+
+  if (window.location.hash) {
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+  }
+}
+
 /* Init on DOM ready */
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -971,6 +989,31 @@ document.addEventListener('DOMContentLoaded', function() {
         nl.classList.remove('open');
       });
     });
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var href = a.getAttribute('href');
+      if (!href || href === '#') return;
+
+      var targetId = href.slice(1);
+      if (!targetId) return;
+
+      var target = document.getElementById(targetId);
+      if (!target) return;
+
+      e.preventDefault();
+      scrollToSection(targetId);
+    });
+  });
+
+  if (window.location.hash) {
+    var initialTargetId = window.location.hash.slice(1);
+    if (initialTargetId && document.getElementById(initialTargetId)) {
+      setTimeout(function() {
+        scrollToSection(initialTargetId);
+      }, 0);
+    }
   }
 
   /* navbar scroll tint */
