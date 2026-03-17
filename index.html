@@ -295,6 +295,53 @@ section { position:relative; z-index:1; }
 .contact-link-value { font-size:0.82rem; font-weight:500; }
 
 /* ─── Terminal ─── */
+#certificates { background-color:var(--bg2); }
+.certificates-intro {
+  max-width:720px; margin-bottom:2rem;
+  font-size:0.88rem; color:var(--muted); line-height:1.9;
+}
+.certificates-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:1.25rem;
+}
+.certificate-card {
+  background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+  padding:1.4rem; display:flex; flex-direction:column; gap:1rem;
+  transition:border-color var(--tr), transform var(--tr), background var(--tr);
+}
+.certificate-card:hover {
+  border-color:var(--accent);
+  transform:translateY(-3px);
+  background:var(--card-hover);
+}
+.certificate-head { display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; }
+.certificate-name {
+  font-family:var(--font-disp); font-size:1.1rem; font-weight:700;
+  color:var(--text); line-height:1.2;
+}
+.certificate-year {
+  font-size:0.72rem; color:var(--accent2); letter-spacing:0.1em;
+  text-transform:uppercase; white-space:nowrap;
+}
+.certificate-meta {
+  display:flex; flex-direction:column; gap:0.35rem;
+  font-size:0.78rem; color:var(--muted);
+}
+.certificate-meta strong { color:var(--text); font-weight:500; }
+.certificate-link {
+  display:inline-flex; align-items:center; justify-content:center;
+  margin-top:auto; padding:0.7rem 1rem;
+  border:1px solid var(--border); border-radius:var(--radius);
+  color:var(--text); font-size:0.78rem; font-weight:500; letter-spacing:0.06em; text-transform:uppercase;
+  transition:border-color var(--tr), color var(--tr), background var(--tr), transform var(--tr);
+}
+.certificate-link:hover {
+  border-color:var(--accent);
+  color:var(--accent);
+  background:var(--glow);
+  transform:translateY(-2px);
+}
 .contact-terminal { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; }
 .terminal-bar { background:var(--bg3); padding:0.75rem 1rem; display:flex; align-items:center; gap:0.5rem; border-bottom:1px solid var(--border); }
 .t-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
@@ -386,12 +433,12 @@ footer a:hover { color:var(--accent2); }
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links" id="nav-links">
-    <li><a href="#about"    data-i18n="nav.about">About</a></li>
-    <li><a href="#skills"   data-i18n="nav.skills">Skills</a></li>
-    <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
-    <li><a href="#contacts" data-i18n="nav.contacts">Contacts</a></li>
-    <li><a href="certificates.html">Certificates</a></li>
-  </ul>
+  <li><a href="#about"    data-i18n="nav.about">About</a></li>
+  <li><a href="#skills"   data-i18n="nav.skills">Skills</a></li>
+  <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+  <li><a href="#contacts" data-i18n="nav.contacts">Contacts</a></li>
+  <li><a href="#certificates" data-i18n="nav.certificates">Certificates</a></li>
+</ul>
   <div class="nav-controls">
     <div class="lang-group">
       <button class="control-btn active" data-lang-btn="en">EN</button>
@@ -570,6 +617,86 @@ footer a:hover { color:var(--accent2); }
   </div>
 </section>
 
+<!-- CERTIFICATES -->
+<section id="certificates">
+  <div class="section-wrap">
+    <div class="section-header reveal">
+      <span class="section-num">05</span>
+      <h2 class="section-title" data-i18n="certificates.title">Certificates</h2>
+      <div class="section-line"></div>
+    </div>
+    <p class="certificates-intro reveal reveal-delay-1" data-i18n="certificates.intro">All certificates listed below were issued by the Ministry of Digital Development of Russia in 2026 and are available as PDF files.</p>
+    <div class="certificates-grid">
+      <article class="certificate-card reveal reveal-delay-1">
+        <div class="certificate-head">
+          <h3 class="certificate-name">API</h3>
+          <span class="certificate-year" data-i18n="certificates.year">2026</span>
+        </div>
+        <div class="certificate-meta">
+          <span><strong data-i18n="certificates.issuerLabel">Issuer:</strong> <span data-i18n="certificates.issuer">Ministry of Digital Development of Russia</span></span>
+          <span><strong data-i18n="certificates.fileLabel">File:</strong> API.pdf</span>
+        </div>
+        <a href="certificates/API.pdf" target="_blank" rel="noopener" class="certificate-link" data-i18n="certificates.view">Open PDF</a>
+      </article>
+      <article class="certificate-card reveal reveal-delay-2">
+        <div class="certificate-head">
+          <h3 class="certificate-name">Docker</h3>
+          <span class="certificate-year" data-i18n="certificates.year">2026</span>
+        </div>
+        <div class="certificate-meta">
+          <span><strong data-i18n="certificates.issuerLabel">Issuer:</strong> <span data-i18n="certificates.issuer">Ministry of Digital Development of Russia</span></span>
+          <span><strong data-i18n="certificates.fileLabel">File:</strong> Docker.pdf</span>
+        </div>
+        <a href="certificates/Docker.pdf" target="_blank" rel="noopener" class="certificate-link" data-i18n="certificates.view">Open PDF</a>
+      </article>
+      <article class="certificate-card reveal reveal-delay-3">
+        <div class="certificate-head">
+          <h3 class="certificate-name">Git</h3>
+          <span class="certificate-year" data-i18n="certificates.year">2026</span>
+        </div>
+        <div class="certificate-meta">
+          <span><strong data-i18n="certificates.issuerLabel">Issuer:</strong> <span data-i18n="certificates.issuer">Ministry of Digital Development of Russia</span></span>
+          <span><strong data-i18n="certificates.fileLabel">File:</strong> Git.pdf</span>
+        </div>
+        <a href="certificates/Git.pdf" target="_blank" rel="noopener" class="certificate-link" data-i18n="certificates.view">Open PDF</a>
+      </article>
+      <article class="certificate-card reveal reveal-delay-4">
+        <div class="certificate-head">
+          <h3 class="certificate-name">Linux</h3>
+          <span class="certificate-year" data-i18n="certificates.year">2026</span>
+        </div>
+        <div class="certificate-meta">
+          <span><strong data-i18n="certificates.issuerLabel">Issuer:</strong> <span data-i18n="certificates.issuer">Ministry of Digital Development of Russia</span></span>
+          <span><strong data-i18n="certificates.fileLabel">File:</strong> Linux.pdf</span>
+        </div>
+        <a href="certificates/Linux.pdf" target="_blank" rel="noopener" class="certificate-link" data-i18n="certificates.view">Open PDF</a>
+      </article>
+      <article class="certificate-card reveal reveal-delay-1">
+        <div class="certificate-head">
+          <h3 class="certificate-name">PostgreSQL</h3>
+          <span class="certificate-year" data-i18n="certificates.year">2026</span>
+        </div>
+        <div class="certificate-meta">
+          <span><strong data-i18n="certificates.issuerLabel">Issuer:</strong> <span data-i18n="certificates.issuer">Ministry of Digital Development of Russia</span></span>
+          <span><strong data-i18n="certificates.fileLabel">File:</strong> PostgreSQL.pdf</span>
+        </div>
+        <a href="certificates/PostgreSQL.pdf" target="_blank" rel="noopener" class="certificate-link" data-i18n="certificates.view">Open PDF</a>
+      </article>
+      <article class="certificate-card reveal reveal-delay-2">
+        <div class="certificate-head">
+          <h3 class="certificate-name">Python</h3>
+          <span class="certificate-year" data-i18n="certificates.year">2026</span>
+        </div>
+        <div class="certificate-meta">
+          <span><strong data-i18n="certificates.issuerLabel">Issuer:</strong> <span data-i18n="certificates.issuer">Ministry of Digital Development of Russia</span></span>
+          <span><strong data-i18n="certificates.fileLabel">File:</strong> Python.pdf</span>
+        </div>
+        <a href="certificates/Python.pdf" target="_blank" rel="noopener" class="certificate-link" data-i18n="certificates.view">Open PDF</a>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <span>&#169; 2026 Ivan Vorobyov &middot; <a href="https://github.com/humoridze" target="_blank">@humoridze</a></span>
@@ -581,7 +708,7 @@ footer a:hover { color:var(--accent2); }
 ════════════════════════════════ */
 var T = {
   en: {
-    "nav.about":"About","nav.skills":"Skills","nav.projects":"Projects","nav.contacts":"Contacts",
+    "nav.about":"About","nav.skills":"Skills","nav.projects":"Projects","nav.contacts":"Contacts","nav.certificates":"Certificates",
     "hero.tag":"Backend & Bot Developer",
     "hero.desc":"I build backend systems, automate business workflows via Telegram bots, and craft custom tools. ~4 years of experience across Python, Java, JavaScript, and more.",
     "hero.cta1":"View Projects","hero.cta2":"Get in Touch",
@@ -607,6 +734,13 @@ var T = {
     "p5.desc":"A public desktop launcher for Minecraft servers — custom UI, version management, and server connectivity built with Electron.",
     "contacts.title":"Contacts",
     "contacts.intro":"I'm open to freelance projects, remote work, and interesting collaborations. Feel free to reach out via any channel below.",
+    "certificates.title":"Certificates",
+    "certificates.intro":"All certificates listed below were issued by the Ministry of Digital Development of Russia in 2026 and are available as PDF files.",
+    "certificates.issuerLabel":"Issuer:",
+    "certificates.issuer":"Ministry of Digital Development of Russia",
+    "certificates.fileLabel":"File:",
+    "certificates.year":"2026",
+    "certificates.view":"Open PDF",
     "c.email":"Email",
     "footer.made":"Built with \u2764 & caffeine",
     "term":[
@@ -618,7 +752,7 @@ var T = {
     ]
   },
   ru: {
-    "nav.about":"\u041e\u0431\u043e \u043c\u043d\u0435","nav.skills":"\u041d\u0430\u0432\u044b\u043a\u0438","nav.projects":"\u041f\u0440\u043e\u0435\u043a\u0442\u044b","nav.contacts":"\u041a\u043e\u043d\u0442\u0430\u043a\u0442\u044b",
+    "nav.about":"\u041e\u0431\u043e \u043c\u043d\u0435","nav.skills":"\u041d\u0430\u0432\u044b\u043a\u0438","nav.projects":"\u041f\u0440\u043e\u0435\u043a\u0442\u044b","nav.contacts":"\u041a\u043e\u043d\u0442\u0430\u043a\u0442\u044b","nav.certificates":"\u0421\u0435\u0440\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u044b",
     "hero.tag":"Backend & Bot \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a",
     "hero.desc":"\u042f \u0440\u0430\u0437\u0440\u0430\u0431\u0430\u0442\u044b\u0432\u0430\u044e backend-\u0441\u0438\u0441\u0442\u0435\u043c\u044b, \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0438\u0440\u0443\u044e \u0431\u0438\u0437\u043d\u0435\u0441-\u043f\u0440\u043e\u0446\u0435\u0441\u0441\u044b \u0447\u0435\u0440\u0435\u0437 Telegram-\u0431\u043e\u0442\u044b \u0438 \u0441\u043e\u0437\u0434\u0430\u044e \u043a\u0430\u0441\u0442\u043e\u043c\u043d\u044b\u0435 \u0438\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u044b. ~4 \u0433\u043e\u0434\u0430 \u043e\u043f\u044b\u0442\u0430.",
     "hero.cta1":"\u041f\u0440\u043e\u0435\u043a\u0442\u044b","hero.cta2":"\u041d\u0430\u043f\u0438\u0441\u0430\u0442\u044c",
@@ -644,6 +778,13 @@ var T = {
     "p5.desc":"\u041f\u0443\u0431\u043b\u0438\u0447\u043d\u044b\u0439 desktop-\u043b\u0430\u0443\u043d\u0447\u0435\u0440 \u0434\u043b\u044f Minecraft-\u0441\u0435\u0440\u0432\u0435\u0440\u043e\u0432 \u2014 \u043a\u0430\u0441\u0442\u043e\u043c\u043d\u044b\u0439 \u0438\u043d\u0442\u0435\u0440\u0444\u0435\u0439\u0441, \u0443\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0432\u0435\u0440\u0441\u0438\u044f\u043c\u0438 \u0438 \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0435 \u043a \u0441\u0435\u0440\u0432\u0435\u0440\u0430\u043c \u043d\u0430 Electron.",
     "contacts.title":"\u041a\u043e\u043d\u0442\u0430\u043a\u0442\u044b",
     "contacts.intro":"\u041e\u0442\u043a\u0440\u044b\u0442 \u043a \u0444\u0440\u0438\u043b\u0430\u043d\u0441-\u043f\u0440\u043e\u0435\u043a\u0442\u0430\u043c, \u0443\u0434\u0430\u043b\u0451\u043d\u043d\u043e\u0439 \u0440\u0430\u0431\u043e\u0442\u0435 \u0438 \u0438\u043d\u0442\u0435\u0440\u0435\u0441\u043d\u043e\u043c\u0443 \u0441\u043e\u0442\u0440\u0443\u0434\u043d\u0438\u0447\u0435\u0441\u0442\u0432\u0443. \u041f\u0438\u0448\u0438\u0442\u0435 \u043c\u043d\u0435 \u043b\u044e\u0431\u044b\u043c \u0443\u0434\u043e\u0431\u043d\u044b\u043c \u0441\u043f\u043e\u0441\u043e\u0431\u043e\u043c.",
+    "certificates.title":"\u0421\u0435\u0440\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u044b",
+    "certificates.intro":"\u0412\u0441\u0435 \u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u044b \u043d\u0438\u0436\u0435 \u0432\u044b\u0434\u0430\u043d\u044b \u041c\u0438\u043d\u0446\u0438\u0444\u0440\u044b \u0420\u043e\u0441\u0441\u0438\u0438 \u0432 2026 \u0433\u043e\u0434\u0443 \u0438 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u044b \u0432 PDF-\u0444\u043e\u0440\u043c\u0430\u0442\u0435.",
+    "certificates.issuerLabel":"\u0412\u044b\u0434\u0430\u043d:",
+    "certificates.issuer":"\u041c\u0438\u043d\u0446\u0438\u0444\u0440\u044b \u0420\u043e\u0441\u0441\u0438\u0438",
+    "certificates.fileLabel":"\u0424\u0430\u0439\u043b:",
+    "certificates.year":"2026",
+    "certificates.view":"\u041e\u0442\u043a\u0440\u044b\u0442\u044c PDF",
     "c.email":"\u042d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u0430\u044f \u043f\u043e\u0447\u0442\u0430",
     "footer.made":"\u0421\u0434\u0435\u043b\u0430\u043d\u043e \u0441 \u2764 \u0438 \u043a\u043e\u0444\u0435",
     "term":[
@@ -655,7 +796,7 @@ var T = {
     ]
   },
   de: {
-    "nav.about":"\u00dcber mich","nav.skills":"Skills","nav.projects":"Projekte","nav.contacts":"Kontakt",
+    "nav.about":"\u00dcber mich","nav.skills":"Skills","nav.projects":"Projekte","nav.contacts":"Kontakt","nav.certificates":"Zertifikate",
     "hero.tag":"Backend & Bot Entwickler",
     "hero.desc":"Ich entwickle Backend-Systeme, automatisiere Gesch\u00e4ftsprozesse \u00fcber Telegram-Bots und baue individuelle Tools. ~4 Jahre Erfahrung mit Python, Java, JavaScript und mehr.",
     "hero.cta1":"Projekte ansehen","hero.cta2":"Kontakt aufnehmen",
@@ -681,6 +822,13 @@ var T = {
     "p5.desc":"Ein \u00f6ffentlicher Desktop-Launcher f\u00fcr Minecraft-Server \u2014 eigene UI, Versionsverwaltung und Serverkonnektivit\u00e4t mit Electron.",
     "contacts.title":"Kontakt",
     "contacts.intro":"Ich bin offen f\u00fcr Freelance-Projekte, Remote-Arbeit und interessante Kooperationen. Meldet euch gerne \u00fcber einen der unten stehenden Kan\u00e4le.",
+    "certificates.title":"Zertifikate",
+    "certificates.intro":"Alle unten aufgef\u00fchrten Zertifikate wurden 2026 vom russischen Ministerium f\u00fcr digitale Entwicklung ausgestellt und sind als PDF verf\u00fcgbar.",
+    "certificates.issuerLabel":"Aussteller:",
+    "certificates.issuer":"Ministerium f\u00fcr digitale Entwicklung Russlands",
+    "certificates.fileLabel":"Datei:",
+    "certificates.year":"2026",
+    "certificates.view":"PDF \u00f6ffnen",
     "c.email":"E-Mail",
     "footer.made":"Mit \u2764 & Kaffee gebaut",
     "term":[
