@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Анастасия Ваделова — Фотограф в Воронеже</title>
+  <meta name="description" content="Профессиональный фотограф в Воронеже. Свадебная, семейная, портретная съёмка. Анастасия Ваделова.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="header__inner">
+    <a href="#" class="logo">
+      <span class="logo__first">Анастасия</span>
+      <span class="logo__last">Ваделова</span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#about" class="nav__link">Обо мне</a>
+      <a href="#services" class="nav__link">Съёмки</a>
+      <a href="#gallery" class="nav__link">Галерея</a>
+      <a href="#reviews" class="nav__link">Отзывы</a>
+      <a href="#contact" class="nav__link nav__link--cta">Написать</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero__bg">
+    <div class="hero__overlay"></div>
+    <div class="hero__grain"></div>
+  </div>
+  <div class="hero__content">
+    <p class="hero__eyebrow reveal">Фотограф · Воронеж</p>
+    <h1 class="hero__title reveal">
+      <em>Моменты,</em><br>которые<br>остаются навсегда
+    </h1>
+    <p class="hero__sub reveal">Свадебная, семейная и портретная съёмка<br>с душой и вниманием к каждой детали</p>
+    <div class="hero__actions reveal">
+      <a href="#contact" class="btn btn--dark">Записаться на съёмку</a>
+      <a href="#gallery" class="btn btn--ghost">Посмотреть работы</a>
+    </div>
+  </div>
+  <div class="hero__scroll">
+    <span></span>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="container">
+    <div class="about__grid">
+      <div class="about__photo-wrap reveal">
+        <div class="about__photo-frame">
+          <img src="images/about.jpg" alt="Анастасия Ваделова — фотограф" loading="lazy">
+        </div>
+        <div class="about__stat">
+          <span class="about__stat-num">4+</span>
+          <span class="about__stat-label">лет опыта</span>
+        </div>
+        <div class="about__stat about__stat--2">
+          <span class="about__stat-num">100+</span>
+          <span class="about__stat-label">человек  сняты</span>
+        </div>
+      </div>
+      <div class="about__text reveal">
+        <p class="section-label">Обо мне</p>
+        <h2 class="section-title">Привет, я <em>Настя</em></h2>
+        <p class="about__desc">Я фотограф из Воронежа, влюблённая в естественный свет и искренние эмоции. Верю, что лучшие кадры — те, где люди забывают о камере и просто живут.</p>
+        <p class="about__desc">За четыре года работы я сняла более ста человек, десятки свадеб и сотни портретных историй. Каждый проект — это новая возможность остановить время и подарить вам что-то, что останется с вами навсегда.</p>
+        <div class="about__tags">
+          <span>Светлые истории</span>
+          <span>Живые эмоции</span>
+          <span>Плёночный стиль</span>
+          <span>Воздушные образы</span>
+        </div>
+        <a href="#contact" class="btn btn--dark">Обсудить съёмку</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="section-label">Виды съёмок</p>
+      <h2 class="section-title">Что я снимаю</h2>
+    </div>
+    <div class="services__grid">
+
+      <div class="service-card reveal" data-delay="0">
+        <div class="service-card__img-wrap">
+          <img src="images/svc-wedding.jpg" alt="Свадебная съёмка" loading="lazy">
+          <div class="service-card__badge">Популярно</div>
+        </div>
+        <div class="service-card__body">
+          <h3 class="service-card__title">Свадебная съёмка</h3>
+          <p class="service-card__desc">Весь день рядом с вами — от утренних сборов до финального танца. Живые, тёплые кадры, которые передают атмосферу вашего дня.</p>
+          <div class="service-card__footer">
+            <span class="service-card__price">от 2 000 ₽ / час</span>
+            <a href="#contact" class="btn btn--sm">Записаться</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card reveal" data-delay="1">
+        <div class="service-card__img-wrap">
+          <img src="images/svc-event.jpg" alt="Съёмка мероприятий" loading="lazy">
+        </div>
+        <div class="service-card__body">
+          <h3 class="service-card__title">Съёмка мероприятий</h3>
+          <p class="service-card__desc">Корпоративы, дни рождения, концерты и любые события — фиксирую атмосферу и важные моменты так, чтобы их хотелось пересматривать снова и снова.</p>
+          <div class="service-card__footer">
+            <span class="service-card__price">от 1 500 ₽ / час</span>
+            <a href="#contact" class="btn btn--sm">Записаться</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card reveal" data-delay="2">
+        <div class="service-card__img-wrap">
+          <img src="images/svc-group.jpg" alt="Групповая съёмка" loading="lazy">
+        </div>
+        <div class="service-card__body">
+          <h3 class="service-card__title">Групповая съёмка</h3>
+          <p class="service-card__desc">Семья, друзья, коллеги или команда — создам живые, настоящие кадры, где каждый выглядит естественно и в кадре чувствуется единство.</p>
+          <div class="service-card__footer">
+            <span class="service-card__price">от 1 500 ₽ / час</span>
+            <a href="#contact" class="btn btn--sm">Записаться</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card reveal" data-delay="3">
+        <div class="service-card__img-wrap">
+          <img src="images/svc-portrait.jpg" alt="Индивидуальная съёмка" loading="lazy">
+        </div>
+        <div class="service-card__body">
+          <h3 class="service-card__title">Индивидуальная съёмка</h3>
+          <p class="service-card__desc">Индивидуальная история про вас. Нежные, воздушные образы — для себя, для профиля, для близких. Помогу с образом и локацией.</p>
+          <div class="service-card__footer">
+            <span class="service-card__price">от 1 000 ₽ / час</span>
+            <a href="#contact" class="btn btn--sm">Записаться</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card reveal" data-delay="4">
+        <div class="service-card__img-wrap">
+          <img src="images/svc-love.jpg" alt="Парная съёмка" loading="lazy">
+        </div>
+        <div class="service-card__body">
+          <h3 class="service-card__title">Парная съёмка</h3>
+          <p class="service-card__desc">Ваша история как пара — романтичные прогулки, уютные кафе, рассветы и закаты. Живые эмоции, а не постановочные позы.</p>
+          <div class="service-card__footer">
+            <span class="service-card__price">от 1 200 ₽ / час</span>
+            <a href="#contact" class="btn btn--sm">Записаться</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="section-label">Галерея</p>
+      <h2 class="section-title">Избранные работы</h2>
+    </div>
+    <div class="gallery__tabs reveal">
+      <button class="gallery__tab active" data-filter="all">Все работы</button>
+      <button class="gallery__tab" data-filter="wedding">Свадьбы</button>
+      <button class="gallery__tab" data-filter="family">Семья</button>
+      <button class="gallery__tab" data-filter="portrait">Портрет</button>
+    </div>
+    <div class="gallery__grid" id="galleryGrid">
+      <a href="images/g1.jpg" class="gallery__item gallery__item--tall" data-glightbox data-category="wedding" data-gallery="portfolio">
+        <img src="images/g1.jpg" alt="Свадебная фотография" loading="lazy">
+        <div class="gallery__item-overlay"><span>Свадьба</span></div>
+      </a>
+      <a href="images/g2.jpg" class="gallery__item" data-glightbox data-category="portrait" data-gallery="portfolio">
+        <img src="images/g2.jpg" alt="Портрет" loading="lazy">
+        <div class="gallery__item-overlay"><span>Портрет</span></div>
+      </a>
+      <a href="images/g3.jpg" class="gallery__item" data-glightbox data-category="family" data-gallery="portfolio">
+        <img src="images/g3.jpg" alt="Семейная фотография" loading="lazy">
+        <div class="gallery__item-overlay"><span>Семья</span></div>
+      </a>
+      <a href="images/g4.jpg" class="gallery__item gallery__item--wide" data-glightbox data-category="wedding" data-gallery="portfolio">
+        <img src="images/g4.jpg" alt="Свадьба" loading="lazy">
+        <div class="gallery__item-overlay"><span>Свадьба</span></div>
+      </a>
+      <a href="images/g5.jpg" class="gallery__item gallery__item--tall" data-glightbox data-category="portrait" data-gallery="portfolio">
+        <img src="images/g5.jpg" alt="Портрет" loading="lazy">
+        <div class="gallery__item-overlay"><span>Портрет</span></div>
+      </a>
+      <a href="images/g6.jpg" class="gallery__item" data-glightbox data-category="family" data-gallery="portfolio">
+        <img src="images/g6.jpg" alt="Семья" loading="lazy">
+        <div class="gallery__item-overlay"><span>Семья</span></div>
+      </a>
+      <a href="images/g7.jpg" class="gallery__item" data-glightbox data-category="wedding" data-gallery="portfolio">
+        <img src="images/g7.jpg" alt="Свадьба" loading="lazy">
+        <div class="gallery__item-overlay"><span>Свадьба</span></div>
+      </a>
+      <a href="images/g8.jpg" class="gallery__item gallery__item--wide" data-glightbox data-category="portrait" data-gallery="portfolio">
+        <img src="images/g8.jpg" alt="Портрет" loading="lazy">
+        <div class="gallery__item-overlay"><span>Портрет</span></div>
+      </a>
+      <a href="images/g9.jpg" class="gallery__item" data-glightbox data-category="family" data-gallery="portfolio">
+        <img src="images/g9.jpg" alt="Семья" loading="lazy">
+        <div class="gallery__item-overlay"><span>Семья</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="section-label">Отзывы</p>
+      <h2 class="section-title">Что говорят клиенты</h2>
+    </div>
+    <div class="swiper reviews-swiper reveal">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+          <div class="review-card">
+            <div class="review-card__stars">★★★★★</div>
+            <p class="review-card__text">«Настя — это волшебство. Мы совсем не умеем позировать, но на фотографиях выглядим так, будто снимались всю жизнь. Тёплая, спокойная атмосфера — дети были в восторге и не хотели уходить!»</p>
+            <div class="review-card__author">
+              <div class="review-card__avatar">МС</div>
+              <div>
+                <strong>Мария и Сергей</strong>
+                <span>Семейная съёмка, парк Алые паруса</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="review-card">
+            <div class="review-card__stars">★★★★★</div>
+            <p class="review-card__text">«Заказывала портретную съёмку для подарка себе на день рождения. Настя помогла подобрать образ, подсказала позы, постоянно шутила и подбадривала. Фотографии — выше всяких ожиданий, плакала от красоты!»</p>
+            <div class="review-card__author">
+              <div class="review-card__avatar">АК</div>
+              <div>
+                <strong>Анна К.</strong>
+                <span>Портретная съёмка</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="review-card">
+            <div class="review-card__stars">★★★★★</div>
+            <p class="review-card__text">«Настя снимала нашу свадьбу — и это лучшее решение, которое мы приняли при подготовке! Незаметна, но везде успевает. Когда получили фото — пересматривали три часа и плакали. Каждый кадр — история.»</p>
+            <div class="review-card__author">
+              <div class="review-card__avatar">ДЕ</div>
+              <div>
+                <strong>Дмитрий и Екатерина</strong>
+                <span>Свадебная съёмка</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="review-card">
+            <div class="review-card__stars">★★★★★</div>
+            <p class="review-card__text">«Снимали love story перед свадьбой — боялись что будет неловко. Но Настя так умеет разрядить атмосферу, что уже через 10 минут забываешь про камеру. Фотографии получились как из кино!»</p>
+            <div class="review-card__author">
+              <div class="review-card__avatar">ОВ</div>
+              <div>
+                <strong>Ольга и Вадим</strong>
+                <span>Love Story</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="review-card">
+            <div class="review-card__stars">★★★★★</div>
+            <p class="review-card__text">«Снимала новорождённого сына — было немного страшно доверять такой нежный момент. Настя всё организовала идеально: тепло, спокойно, малыш ни разу не заплакал. Фото храним как реликвию.»</p>
+            <div class="review-card__author">
+              <div class="review-card__avatar">НП</div>
+              <div>
+                <strong>Наталья П.</strong>
+                <span>Съёмка новорождённого</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="section-label">Как это работает</p>
+      <h2 class="section-title">Просто и удобно</h2>
+    </div>
+    <div class="process__steps">
+      <div class="process__step reveal">
+        <div class="process__num">01</div>
+        <h3>Заявка</h3>
+        <p>Оставьте заявку через форму или напишите в Telegram — я отвечу в течение часа</p>
+      </div>
+      <div class="process__line"></div>
+      <div class="process__step reveal">
+        <div class="process__num">02</div>
+        <h3>Обсуждение</h3>
+        <p>Договоримся о дате, локации, образе и всех деталях вашей съёмки</p>
+      </div>
+      <div class="process__line"></div>
+      <div class="process__step reveal">
+        <div class="process__num">03</div>
+        <h3>Съёмка</h3>
+        <p>Проведём время вместе легко и непринуждённо — я создам нужную атмосферу</p>
+      </div>
+      <div class="process__line"></div>
+      <div class="process__step reveal">
+        <div class="process__num">04</div>
+        <h3>Галерея</h3>
+        <p>Через несколько дней вы получите ссылку на закрытую онлайн-галерею с готовыми фото</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact__grid">
+      <div class="contact__info reveal">
+        <p class="section-label">Контакты</p>
+        <h2 class="section-title">Запишитесь<br>на съёмку</h2>
+        <p class="contact__sub">Расскажите о своей идее — я помогу воплотить её в жизнь. Обычно отвечаю в течение часа.</p>
+        <div class="contact__links">
+          <a href="https://t.me/avphoto" class="contact__link" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.932z"/></svg>
+            Telegram
+          </a>
+          <a href="https://www.instagram.com/avphoto" class="contact__link" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            Instagram
+          </a>
+          <a href="tel:+79001234567" class="contact__link">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            +7 (900) 123-45-67
+          </a>
+        </div>
+      </div>
+      <div class="contact__form-wrap reveal">
+        <form class="contact__form" id="contactForm" action="php/send.php" method="POST" novalidate>
+          <div class="form-group">
+            <label for="name">Ваше имя *</label>
+            <input type="text" id="name" name="name" placeholder="Анна" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Телефон *</label>
+            <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+          </div>
+          <div class="form-group">
+            <label for="service">Вид съёмки</label>
+            <select id="service" name="service">
+              <option value="">Выберите вид съёмки</option>
+              <option>Свадебная съёмка</option>
+              <option>Семейная съёмка</option>
+              <option>Портретная съёмка</option>
+              <option>Love Story</option>
+              <option>Новорождённые</option>
+              <option>Деловой портрет</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="date">Примерная дата</label>
+            <input type="date" id="date" name="date">
+          </div>
+          <div class="form-group form-group--full">
+            <label for="message">Сообщение</label>
+            <textarea id="message" name="message" rows="4" placeholder="Расскажите о вашей идее..."></textarea>
+          </div>
+          <button type="submit" class="btn btn--dark btn--full">
+            <span>Отправить заявку</span>
+            <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+          </button>
+          <p class="form-privacy">Нажимая «Отправить», вы соглашаетесь с <a href="#privacy-modal" class="privacy-link" id="openPrivacy">Политикой конфиденциальности</a> и даёте согласие на обработку персональных данных в соответствии с Федеральным законом №152-ФЗ.</p>
+          <div class="form-message" id="formMessage"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <a href="#" class="logo logo--light">
+          <span class="logo__first">Анастасия</span>
+          <span class="logo__last">Ваделова</span>
+        </a>
+        <p>Фотограф в Воронеже.<br>Снимаю с любовью.</p>
+      </div>
+      <div class="footer__nav">
+        <p class="footer__nav-title">Навигация</p>
+        <a href="#about">Обо мне</a>
+        <a href="#services">Съёмки и цены</a>
+        <a href="#gallery">Галерея</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#contact">Контакты</a>
+      </div>
+      <div class="footer__nav">
+        <p class="footer__nav-title">Съёмки</p>
+        <a href="#services">Свадебная</a>
+        <a href="#services">Семейная</a>
+        <a href="#services">Портретная</a>
+        <a href="#services">Love Story</a>
+        <a href="#services">Новорождённые</a>
+      </div>
+      <div class="footer__social">
+        <p class="footer__nav-title">Соцсети</p>
+        <div class="footer__social-links">
+          <a href="https://t.me/avphotographer" target="_blank" rel="noopener" aria-label="Telegram">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.932z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/avoronezhphoto" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Анастасия Ваделова. Все права защищены.</p>
+      <a href="#privacy-modal" id="openPrivacy2" class="footer__privacy-link">Политика конфиденциальности</a>
+    </div>
+  </div>
+</footer>
+
+<div class="modal" id="privacyModal" role="dialog" aria-modal="true" aria-label="Политика конфиденциальности">
+  <div class="modal__overlay" id="modalOverlay"></div>
+  <div class="modal__box">
+    <button class="modal__close" id="closeModal" aria-label="Закрыть">✕</button>
+    <div class="modal__content">
+      <h2>Политика конфиденциальности</h2>
+      <p><strong>Дата вступления в силу:</strong> 1 января 2024 года</p>
+      <p>Настоящая Политика конфиденциальности регулирует порядок сбора, использования и хранения персональных данных, предоставленных пользователями сайта фотографа Анастасии Ваделовой (далее — «Администратор»).</p>
+      <h3>1. Сбор персональных данных</h3>
+      <p>Администратор собирает следующие персональные данные, добровольно предоставляемые пользователями через форму обратной связи:</p>
+      <ul>
+        <li>Имя и фамилия;</li>
+        <li>Номер телефона;</li>
+        <li>Содержание сообщения.</li>
+      </ul>
+      <h3>2. Цели обработки</h3>
+      <p>Персональные данные обрабатываются исключительно в целях: ответа на запросы пользователей; организации и проведения фотосъёмок; ведения деловой переписки.</p>
+      <h3>3. Правовое основание</h3>
+      <p>Обработка персональных данных осуществляется на основании Федерального закона от 27.07.2006 № 152-ФЗ «О персональных данных» и согласия субъекта персональных данных.</p>
+      <h3>4. Хранение и защита</h3>
+      <p>Персональные данные хранятся не дольше, чем этого требуют цели обработки, и защищены от несанкционированного доступа. Данные не передаются третьим лицам без согласия субъекта, за исключением случаев, предусмотренных законодательством РФ.</p>
+      <h3>5. Права субъекта</h3>
+      <p>Вы вправе в любое время: запросить доступ к своим данным; потребовать их исправления или удаления; отозвать согласие на обработку.</p>
+      <p>Для реализации своих прав обращайтесь по адресу: <a href="mailto:vadelova@mail.ru">vadelova@mail.ru</a></p>
+      <h3>6. Контактная информация</h3>
+      <p>Анастасия Ваделова, г. Воронеж. Телефон: +7 (900) 123-45-67. Email: vadelova@mail.ru</p>
+      <button class="btn btn--dark" id="closeModal2">Понятно</button>
+    </div>
+  </div>
+</div>
+
+<div id="demo-banner" style="
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+  background: #1a1a1a;
+  color: #fff;
+  font-family: 'Jost', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  box-shadow: 0 -2px 12px rgba(0,0,0,0.3);
+">
+  <div style="display:flex;align-items:flex-start;gap:10px;flex:1;">
+    <svg style="flex-shrink:0;margin-top:2px;" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" fill="#aaa"/></svg>
+    <span style="color:#ccc;">
+      <strong style="color:#fff;font-weight:500;">Демонстрационный сайт.</strong>
+      Данный ресурс является учебным примером и не несёт реального функционала. Все контактные данные, цены и предложения являются вымышленными. Персональные данные не собираются и не обрабатываются. Сайт создан исключительно в целях демонстрации и не осуществляет коммерческую деятельность в соответствии с требованиями законодательства Российской Федерации.
+    </span>
+  </div>
+  <button onclick="document.getElementById('demo-banner').style.display='none'" aria-label="Закрыть" style="
+    background: none;
+    border: 1px solid #444;
+    color: #aaa;
+    cursor: pointer;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: border-color 0.2s;
+  " onmouseover="this.style.borderColor='#888'" onmouseout="this.style.borderColor='#444'">Понятно</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
