@@ -1,22 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>humoridze — Backend &amp; Bot Developer</title>
-<!-- FIX: removed duplicate favicon declarations -->
+<title>humoridze — Backend Developer</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Unbounded:wght@300;400;700;900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
 <!-- NAV -->
-<nav id="navbar">
-  <div class="nav-logo">hu<span>moridze</span></div>
+<nav>
+  <div class="nav-logo">humoridze</div>
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -25,66 +24,76 @@
     <li><a href="#skills"       data-i18n="nav.skills">Skills</a></li>
     <li><a href="#projects"     data-i18n="nav.projects">Projects</a></li>
     <li><a href="#contacts"     data-i18n="nav.contacts">Contacts</a></li>
-    <li><a href="#certificates" data-i18n="nav.certificates">Certificates</a></li>
+    <li><a href="#certificates" data-i18n="nav.certificates">Certs</a></li>
   </ul>
-  <div class="nav-controls">
-    <div class="lang-group">
-      <button class="control-btn active" data-lang-btn="en">EN</button>
-      <button class="control-btn"        data-lang-btn="ru">RU</button>
-      <button class="control-btn"        data-lang-btn="de">DE</button>
-    </div>
-    <button class="control-btn" id="theme-btn">&#9728; Light</button>
+  <div class="nav-lang">
+    <button class="lang-btn active" data-lang="en">EN</button>
+    <button class="lang-btn"        data-lang="ru">RU</button>
+    <button class="lang-btn"        data-lang="de">DE</button>
   </div>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-orb hero-orb-1"></div>
-  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-kanji">開</div>
+  <div class="hero-kanji2">発</div>
+
   <div class="hero-inner">
-    <div class="hero-tag" data-i18n="hero.tag" data-no-lang-anim>Backend &amp; Bot Developer</div>
+    <div class="hero-eyebrow" data-i18n="hero.tag">Backend &amp; Bot Developer</div>
     <h1 class="hero-name">
-      <span class="first">Ivan</span>
-      <span class="last">Vorobyov</span>
+      Ivan<br>Vorobyov
+      <span class="sub" data-i18n="hero.handle">@humoridze</span>
     </h1>
-    <div class="hero-handle"><span>@</span>humoridze</div>
-    <p class="hero-desc" data-i18n="hero.desc" data-no-lang-anim>~4 years writing backend code and Telegram bots. Python is home base — Java, JS, PHP when needed.</p>
+    <div class="hero-divider"></div>
+    <p class="hero-desc" data-i18n="hero.desc">~4 years writing backend code and Telegram bots. Python is home base — Java, JS, PHP when needed.</p>
     <div class="hero-cta">
-      <a href="#projects" class="btn btn-primary" data-i18n="hero.cta1" data-no-lang-anim>View Projects</a>
-      <a href="#contacts" class="btn btn-outline"  data-i18n="hero.cta2" data-no-lang-anim>Get in Touch</a>
+      <a href="#projects" class="btn btn-primary" data-i18n="hero.cta1">Projects</a>
+      <a href="#contacts" class="btn"             data-i18n="hero.cta2">Contact</a>
     </div>
   </div>
+
   <div class="hero-meta">
     <div class="hero-meta-item" data-i18n="hero.loc">Voronezh, Russia</div>
     <div class="hero-meta-item" data-i18n="hero.exp">~4 years experience</div>
     <div class="hero-meta-item" data-i18n="hero.avail">Open to remote</div>
   </div>
-  <div class="scroll-indicator">
-    <span class="scroll-label" data-i18n="hero.scroll">scroll</span>
+
+  <div class="scroll-hint">
+    <span data-i18n="hero.scroll">scroll</span>
     <div class="scroll-line"></div>
   </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="section-wrap">
-    <div class="section-header reveal">
-      <span class="section-num">01</span>
-      <h2 class="section-title" data-i18n="about.title">About</h2>
-      <div class="section-line"></div>
+  <div class="section-header reveal">
+    <span class="section-num">01</span>
+    <h2 class="section-title" data-i18n="about.title">About</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p data-i18n="about.p1">Backend and bots. No bootcamps — picked it up by taking real projects, hitting walls, and working through them. Started around 2020.</p>
+      <p data-i18n="about.p2">Day-to-day it's <strong>Python + aiogram</strong>: booking flows, sales bots, reminder systems. Also build REST APIs, Electron desktop apps, and PHP sites when the job calls for it.</p>
+      <div class="about-quote" data-i18n="about.quote">"Repetitive tasks are just bots waiting to be written."</div>
+      <p data-i18n="about.p3">Based in <strong>Voronezh, Russia</strong>. Remote only.</p>
     </div>
-    <div class="about-grid">
-      <div class="about-text reveal reveal-delay-1">
-        <p data-i18n="about.p1">I do backend and Telegram bots. No bootcamps — learned by taking on real work, running into walls, and figuring it out. Been at it since around 2020.</p>
-        <p data-i18n="about.p2">Day to day it's <strong>Python + aiogram</strong> — booking bots, sales flows, reminder systems. Also do REST APIs, Electron apps, and PHP when a project needs it.</p>
-        <div class="about-highlight" data-i18n="about.quote">"Repetitive tasks are just bots waiting to be written."</div>
-        <p data-i18n="about.p3">Based in <strong>Voronezh, Russia</strong>. Remote only.</p>
+    <div class="stats-grid reveal">
+      <div class="stat-card">
+        <div class="stat-num">4</div>
+        <div class="stat-label" data-i18n="stat.years">Years exp.</div>
       </div>
-      <div class="about-stats reveal reveal-delay-2">
-        <div class="stat-card"><div class="stat-num">4</div><div class="stat-label" data-i18n="stat.years">Years Experience</div></div>
-        <div class="stat-card"><div class="stat-num">5+</div><div class="stat-label" data-i18n="stat.projects">Projects</div></div>
-        <div class="stat-card"><div class="stat-num">6</div><div class="stat-label" data-i18n="stat.langs">Languages</div></div>
-        <div class="stat-card"><div class="stat-num">&#8734;</div><div class="stat-label" data-i18n="stat.bots">Bots Built</div></div>
+      <div class="stat-card">
+        <div class="stat-num">5+</div>
+        <div class="stat-label" data-i18n="stat.projects">Projects</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">6</div>
+        <div class="stat-label" data-i18n="stat.langs">Languages</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">∞</div>
+        <div class="stat-label" data-i18n="stat.bots">Bots built</div>
       </div>
     </div>
   </div>
@@ -92,49 +101,72 @@
 
 <!-- SKILLS -->
 <section id="skills">
-  <div class="section-wrap">
-    <div class="section-header reveal">
-      <span class="section-num">02</span>
-      <h2 class="section-title" data-i18n="skills.title">Skills</h2>
-      <div class="section-line"></div>
+  <div class="section-header reveal">
+    <span class="section-num">02</span>
+    <h2 class="section-title" data-i18n="skills.title">Skills</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="skills-rows reveal">
+    <div class="skill-row">
+      <span class="skill-num">01</span>
+      <span class="skill-cat" data-i18n="skills.languages">Lang</span>
+      <div class="skill-sep"></div>
+      <div class="skill-items">
+        <span class="skill-item skill-item--bright">Python</span>
+        <span class="skill-dot"></span>
+        <span class="skill-item skill-item--bright">Java</span>
+        <span class="skill-dot"></span>
+        <span class="skill-item">JavaScript</span>
+        <span class="skill-dot"></span>
+        <span class="skill-item">PHP</span>
+        <span class="skill-dot"></span>
+        <span class="skill-item">Lua</span>
+        <span class="skill-dot"></span>
+        <span class="skill-item">SQL</span>
+      </div>
     </div>
-    <div class="skills-grid">
-      <div class="skill-category reveal reveal-delay-1">
-        <div class="skill-cat-title" data-i18n="skills.languages">Languages</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Python</span>
-          <span class="skill-tag">Java</span>
-          <span class="skill-tag">JavaScript</span>
-          <span class="skill-tag">PHP</span>
-          <span class="skill-tag">Lua</span>
-          <span class="skill-tag">SQL</span>
-        </div>
+    <div class="skill-row">
+      <span class="skill-num">02</span>
+      <span class="skill-cat" data-i18n="skills.tech">Tech</span>
+      <div class="skill-sep"></div>
+      <div class="skill-items">
+        <span class="skill-item skill-item--bright">Telegram Bot API</span>
+        <span class="skill-dot"></span>
+        <span class="skill-item skill-item--bright">aiogram 3</span>
+        <span class="skill-dot"></span>
+        <span class="skill-item">REST API</span>
+        <span class="skill-dot"></span>
+        <span class="skill-item">Electron</span>
+        <span class="skill-dot"></span>
+        <span class="skill-item">asyncio</span>
       </div>
-      <div class="skill-category reveal reveal-delay-2">
-        <div class="skill-cat-title" data-i18n="skills.tech">Technologies</div>
-        <div class="skill-tags">
-          <span class="skill-tag">REST API</span>
-          <span class="skill-tag">Telegram Bot API</span>
-          <span class="skill-tag">aiogram</span>
-          <span class="skill-tag">Electron</span>
-        </div>
+    </div>
+    <div class="skill-row">
+      <span class="skill-num">03</span>
+      <span class="skill-cat" data-i18n="skills.databases">DB</span>
+      <div class="skill-sep"></div>
+      <div class="skill-items">
+        <span class="skill-item skill-item--bright">PostgreSQL</span>
+        <span class="skill-dot"></span>
+        <span class="skill-item">Redis</span>
+        <span class="skill-dot"></span>
+        <span class="skill-item">MySQL</span>
+        <span class="skill-dot"></span>
+        <span class="skill-item">SQLite</span>
       </div>
-      <div class="skill-category reveal reveal-delay-3">
-        <div class="skill-cat-title" data-i18n="skills.databases">Databases</div>
-        <div class="skill-tags">
-          <span class="skill-tag">PostgreSQL</span>
-          <span class="skill-tag">MySQL</span>
-          <span class="skill-tag">SQLite</span>
-          <span class="skill-tag">Redis</span>
-        </div>
-      </div>
-      <div class="skill-category reveal reveal-delay-4">
-        <div class="skill-cat-title" data-i18n="skills.tools">Tools</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Git</span>
-          <span class="skill-tag">Docker</span>
-          <span class="skill-tag">GitHub</span>
-        </div>
+    </div>
+    <div class="skill-row">
+      <span class="skill-num">04</span>
+      <span class="skill-cat" data-i18n="skills.tools">Tools</span>
+      <div class="skill-sep"></div>
+      <div class="skill-items">
+        <span class="skill-item">Docker</span>
+        <span class="skill-dot"></span>
+        <span class="skill-item">Git</span>
+        <span class="skill-dot"></span>
+        <span class="skill-item">GitHub</span>
+        <span class="skill-dot"></span>
+        <span class="skill-item">Linux</span>
       </div>
     </div>
   </div>
@@ -142,52 +174,57 @@
 
 <!-- PROJECTS -->
 <section id="projects">
-  <div class="section-wrap">
-    <div class="section-header reveal">
-      <span class="section-num">03</span>
-      <h2 class="section-title" data-i18n="projects.title">Projects</h2>
-      <div class="section-line"></div>
+  <div class="section-header reveal">
+    <span class="section-num">03</span>
+    <h2 class="section-title" data-i18n="projects.title">Projects</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card reveal" data-num="01">
+      <div class="project-year">2023</div>
+      <h3 class="project-title" data-i18n="p1.title">CS:GO Case Website</h3>
+      <p class="project-desc" data-i18n="p1.desc">Backend for a case-opening site: drop logic, item system, database structure. Built in PHP.</p>
+      <div class="project-tech">
+        <span class="tech-tag">PHP</span>
+        <span class="tech-tag">SQL</span>
+      </div>
     </div>
-    <div class="projects-grid">
-      <div class="project-card reveal reveal-delay-1">
-        <div class="project-header">
-          <h3 class="project-title" data-i18n="p1.title">CS:GO Case Website</h3>
-          <span class="project-year">2023</span>
-        </div>
-        <p class="project-desc" data-i18n="p1.desc">Backend for a case-opening site: drop logic, item system, DB structure. PHP.</p>
-        <div class="project-tech"><span class="tech-badge">PHP</span><span class="tech-badge">SQL</span></div>
+    <div class="project-card reveal" data-num="02">
+      <div class="project-year">2024</div>
+      <h3 class="project-title" data-i18n="p2.title">Booking Bot</h3>
+      <p class="project-desc" data-i18n="p2.desc">Telegram bot for scheduling appointments. Handles slots, reminders, and admin controls in one flow.</p>
+      <div class="project-tech">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">aiogram</span>
+        <span class="tech-tag">PostgreSQL</span>
       </div>
-      <div class="project-card reveal reveal-delay-2">
-        <div class="project-header">
-          <h3 class="project-title" data-i18n="p2.title">Telegram Bot for Car Service</h3>
-          <span class="project-year">2025</span>
-        </div>
-        <p class="project-desc" data-i18n="p2.desc">Replaced the owner's manual DM workflow. Bot handles bookings, FAQ, and service requests end to end.</p>
-        <div class="project-tech"><span class="tech-badge">Python</span><span class="tech-badge">aiogram</span></div>
+    </div>
+    <div class="project-card reveal" data-num="03">
+      <div class="project-year">2024</div>
+      <h3 class="project-title" data-i18n="p3.title">Sales Bot</h3>
+      <p class="project-desc" data-i18n="p3.desc">Full order funnel in Telegram: catalog, cart, checkout, payment integration, and admin panel.</p>
+      <div class="project-tech">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">aiogram</span>
+        <span class="tech-tag">Payments API</span>
       </div>
-      <div class="project-card reveal reveal-delay-3">
-        <div class="project-header">
-          <h3 class="project-title" data-i18n="p3.title">VPN Key Sales Bot</h3>
-          <span class="project-year">2025</span>
-        </div>
-        <p class="project-desc" data-i18n="p3.desc">User pays → gets a key → joins the group. No manual steps anywhere in the chain.</p>
-        <div class="project-tech"><span class="tech-badge">Python</span><span class="tech-badge">aiogram</span></div>
+    </div>
+    <div class="project-card reveal" data-num="04">
+      <div class="project-year">2025</div>
+      <h3 class="project-title" data-i18n="p4.title">Medicine Reminder Bot</h3>
+      <p class="project-desc" data-i18n="p4.desc">Each user sets their own schedule. Bot sends reminders on time and logs confirmations.</p>
+      <div class="project-tech">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">aiogram</span>
       </div>
-      <div class="project-card reveal reveal-delay-1">
-        <div class="project-header">
-          <h3 class="project-title" data-i18n="p4.title">Medicine Reminder Bot</h3>
-          <span class="project-year">2025</span>
-        </div>
-        <p class="project-desc" data-i18n="p4.desc">Each user sets their own time. Bot fires reminders on schedule and logs confirmations.</p>
-        <div class="project-tech"><span class="tech-badge">Python</span><span class="tech-badge">aiogram</span></div>
-      </div>
-      <div class="project-card reveal reveal-delay-2">
-        <div class="project-header">
-          <h3 class="project-title" data-i18n="p5.title">Minecraft Launcher</h3>
-          <span class="project-year">2026</span>
-        </div>
-        <p class="project-desc" data-i18n="p5.desc">Desktop launcher for a Minecraft server. Custom UI, version management, auto-update. Electron.</p>
-        <div class="project-tech"><span class="tech-badge">JavaScript</span><span class="tech-badge">Electron</span></div>
+    </div>
+    <div class="project-card reveal" data-num="05">
+      <div class="project-year">2026</div>
+      <h3 class="project-title" data-i18n="p5.title">Minecraft Launcher</h3>
+      <p class="project-desc" data-i18n="p5.desc">Desktop launcher for a private Minecraft server. Custom UI, version management, auto-update system.</p>
+      <div class="project-tech">
+        <span class="tech-tag">JavaScript</span>
+        <span class="tech-tag">Electron</span>
       </div>
     </div>
   </div>
@@ -195,137 +232,111 @@
 
 <!-- CONTACTS -->
 <section id="contacts">
-  <div class="section-wrap">
-    <div class="section-header reveal">
-      <span class="section-num">04</span>
-      <h2 class="section-title" data-i18n="contacts.title">Contacts</h2>
-      <div class="section-line"></div>
+  <div class="section-header reveal">
+    <span class="section-num">04</span>
+    <h2 class="section-title" data-i18n="contacts.title">Contacts</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="contacts-grid">
+    <div class="reveal">
+      <p class="contact-intro" data-i18n="contacts.intro">Open to freelance and remote work. Write anywhere — I'll get back to you.</p>
+      <div class="contact-links">
+        <a href="mailto:htvoeylife@gmail.com" class="contact-link">
+          <div class="contact-link-icon">✉</div>
+          <div class="contact-link-body">
+            <span class="contact-link-label" data-i18n="c.email">Email</span>
+            <span class="contact-link-value">htvoeylife@gmail.com</span>
+          </div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+        <a href="https://t.me/legendagachimuchi" target="_blank" rel="noopener noreferrer" class="contact-link">
+          <div class="contact-link-icon">✈</div>
+          <div class="contact-link-body">
+            <span class="contact-link-label">Telegram</span>
+            <span class="contact-link-value">@legendagachimuchi</span>
+          </div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+        <a href="https://github.com/humoridze" target="_blank" rel="noopener noreferrer" class="contact-link">
+          <div class="contact-link-icon">◈</div>
+          <div class="contact-link-body">
+            <span class="contact-link-label">GitHub</span>
+            <span class="contact-link-value">github.com/humoridze</span>
+          </div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+        <a href="https://codexdev.ru" target="_blank" rel="noopener noreferrer" class="contact-link">
+          <div class="contact-link-icon">◉</div>
+          <div class="contact-link-body">
+            <span class="contact-link-label">Website</span>
+            <span class="contact-link-value">codexdev.ru</span>
+          </div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+      </div>
     </div>
-    <div class="contacts-inner">
-      <div class="reveal reveal-delay-1">
-        <p class="contact-intro" data-i18n="contacts.intro">Open to freelance and remote work. Write anywhere — I'll get back to you.</p>
-        <div class="contact-links">
-          <!-- FIX: href="#" is fine here; JS sets real href after load -->
-          <a href="#" id="email-link" class="contact-link">
-            <div class="contact-link-icon">&#9993;</div>
-            <div class="contact-link-text">
-              <span class="contact-link-label" data-i18n="c.email">Email</span>
-              <span class="contact-link-value" id="email-val"></span>
-            </div>
-          </a>
-          <a href="https://t.me/legendagachimuchi" target="_blank" rel="noopener noreferrer" class="contact-link">
-            <div class="contact-link-icon">&#9992;</div>
-            <div class="contact-link-text">
-              <span class="contact-link-label">Telegram</span>
-              <span class="contact-link-value">@legendagachimuchi</span>
-            </div>
-          </a>
-          <!-- FIX: &#8997; (⌥ Option symbol) used for GitHub — swapped to a more appropriate ⌘/# symbol -->
-          <a href="https://github.com/humoridze" target="_blank" rel="noopener noreferrer" class="contact-link">
-            <div class="contact-link-icon">&#9903;</div>
-            <div class="contact-link-text">
-              <span class="contact-link-label">GitHub</span>
-              <span class="contact-link-value">github.com/humoridze</span>
-            </div>
-          </a>
-        </div>
+    <div class="terminal reveal">
+      <div class="terminal-bar">
+        <div class="t-dot t-dot-r"></div>
+        <div class="t-dot t-dot-y"></div>
+        <div class="t-dot t-dot-g"></div>
+        <span class="terminal-title">ivan@dev: ~</span>
       </div>
-      <div class="contact-terminal reveal reveal-delay-2">
-        <div class="terminal-bar">
-          <div class="t-dot t-dot-r"></div>
-          <div class="t-dot t-dot-y"></div>
-          <div class="t-dot t-dot-g"></div>
-          <span class="terminal-title">ivan@dev: ~</span>
-        </div>
-        <div class="terminal-body" id="terminal-body"></div>
-      </div>
+      <div class="terminal-body" id="terminal-body"></div>
     </div>
   </div>
 </section>
 
 <!-- CERTIFICATES -->
 <section id="certificates">
-  <div class="section-wrap">
-    <div class="section-header reveal">
-      <span class="section-num">05</span>
-      <h2 class="section-title" data-i18n="certificates.title">Certificates</h2>
-      <div class="section-line"></div>
+  <div class="section-header reveal">
+    <span class="section-num">05</span>
+    <h2 class="section-title" data-i18n="certificates.title">Certificates</h2>
+    <div class="section-line"></div>
+  </div>
+  <p class="contact-intro reveal" style="margin-bottom:40px" data-i18n="certificates.intro">All certificates were issued by the Ministry of Digital Development of Russia in 2026 and are available as PDF files.</p>
+  <div class="certs-grid">
+    <div class="cert-card reveal">
+      <div class="cert-name">API</div>
+      <div class="cert-meta">Ministry of Digital Development<br>Russia · 2026 · API.pdf</div>
+      <a href="certificates/API.pdf" target="_blank" class="cert-link" data-i18n="certificates.view">Open PDF →</a>
     </div>
-    <p class="certificates-intro reveal reveal-delay-1" data-i18n="certificates.intro">All certificates listed below were issued by the Ministry of Digital Development of Russia in 2026 and are available as PDF files.</p>
-    <div class="certificates-grid">
-      <article class="certificate-card reveal reveal-delay-1">
-        <div class="certificate-head">
-          <h3 class="certificate-name">API</h3>
-          <span class="certificate-year" data-i18n="certificates.year">2026</span>
-        </div>
-        <div class="certificate-meta">
-          <span><strong data-i18n="certificates.issuerLabel">Issuer:</strong> <span data-i18n="certificates.issuer">Ministry of Digital Development of Russia</span></span>
-          <span><strong data-i18n="certificates.fileLabel">File:</strong> API.pdf</span>
-        </div>
-        <a href="certificates/API.pdf" target="_blank" rel="noopener noreferrer" class="certificate-link" data-i18n="certificates.view">Open PDF</a>
-      </article>
-      <article class="certificate-card reveal reveal-delay-2">
-        <div class="certificate-head">
-          <h3 class="certificate-name">Docker</h3>
-          <span class="certificate-year" data-i18n="certificates.year">2026</span>
-        </div>
-        <div class="certificate-meta">
-          <span><strong data-i18n="certificates.issuerLabel">Issuer:</strong> <span data-i18n="certificates.issuer">Ministry of Digital Development of Russia</span></span>
-          <span><strong data-i18n="certificates.fileLabel">File:</strong> Docker.pdf</span>
-        </div>
-        <a href="certificates/Docker.pdf" target="_blank" rel="noopener noreferrer" class="certificate-link" data-i18n="certificates.view">Open PDF</a>
-      </article>
-      <article class="certificate-card reveal reveal-delay-3">
-        <div class="certificate-head">
-          <h3 class="certificate-name">Git</h3>
-          <span class="certificate-year" data-i18n="certificates.year">2026</span>
-        </div>
-        <div class="certificate-meta">
-          <span><strong data-i18n="certificates.issuerLabel">Issuer:</strong> <span data-i18n="certificates.issuer">Ministry of Digital Development of Russia</span></span>
-          <span><strong data-i18n="certificates.fileLabel">File:</strong> Git.pdf</span>
-        </div>
-        <a href="certificates/Git.pdf" target="_blank" rel="noopener noreferrer" class="certificate-link" data-i18n="certificates.view">Open PDF</a>
-      </article>
-      <article class="certificate-card reveal reveal-delay-4">
-        <div class="certificate-head">
-          <h3 class="certificate-name">Linux</h3>
-          <span class="certificate-year" data-i18n="certificates.year">2026</span>
-        </div>
-        <div class="certificate-meta">
-          <span><strong data-i18n="certificates.issuerLabel">Issuer:</strong> <span data-i18n="certificates.issuer">Ministry of Digital Development of Russia</span></span>
-          <span><strong data-i18n="certificates.fileLabel">File:</strong> Linux.pdf</span>
-        </div>
-        <a href="certificates/Linux.pdf" target="_blank" rel="noopener noreferrer" class="certificate-link" data-i18n="certificates.view">Open PDF</a>
-      </article>
-      <article class="certificate-card reveal reveal-delay-1">
-        <div class="certificate-head">
-          <h3 class="certificate-name">PostgreSQL</h3>
-          <span class="certificate-year" data-i18n="certificates.year">2026</span>
-        </div>
-        <div class="certificate-meta">
-          <span><strong data-i18n="certificates.issuerLabel">Issuer:</strong> <span data-i18n="certificates.issuer">Ministry of Digital Development of Russia</span></span>
-          <span><strong data-i18n="certificates.fileLabel">File:</strong> PostgreSQL.pdf</span>
-        </div>
-        <a href="certificates/PostgreSQL.pdf" target="_blank" rel="noopener noreferrer" class="certificate-link" data-i18n="certificates.view">Open PDF</a>
-      </article>
-      <article class="certificate-card reveal reveal-delay-2">
-        <div class="certificate-head">
-          <h3 class="certificate-name">Python</h3>
-          <span class="certificate-year" data-i18n="certificates.year">2026</span>
-        </div>
-        <div class="certificate-meta">
-          <span><strong data-i18n="certificates.issuerLabel">Issuer:</strong> <span data-i18n="certificates.issuer">Ministry of Digital Development of Russia</span></span>
-          <span><strong data-i18n="certificates.fileLabel">File:</strong> Python.pdf</span>
-        </div>
-        <a href="certificates/Python.pdf" target="_blank" rel="noopener noreferrer" class="certificate-link" data-i18n="certificates.view">Open PDF</a>
-      </article>
+    <div class="cert-card reveal">
+      <div class="cert-name">Docker</div>
+      <div class="cert-meta">Ministry of Digital Development<br>Russia · 2026 · Docker.pdf</div>
+      <a href="certificates/Docker.pdf" target="_blank" class="cert-link" data-i18n="certificates.view">Open PDF →</a>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-name">Git</div>
+      <div class="cert-meta">Ministry of Digital Development<br>Russia · 2026 · Git.pdf</div>
+      <a href="certificates/Git.pdf" target="_blank" class="cert-link" data-i18n="certificates.view">Open PDF →</a>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-name">Linux</div>
+      <div class="cert-meta">Ministry of Digital Development<br>Russia · 2026 · Linux.pdf</div>
+      <a href="certificates/Linux.pdf" target="_blank" class="cert-link" data-i18n="certificates.view">Open PDF →</a>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-name">PostgreSQL</div>
+      <div class="cert-meta">Ministry of Digital Development<br>Russia · 2026 · PostgreSQL.pdf</div>
+      <a href="certificates/PostgreSQL.pdf" target="_blank" class="cert-link" data-i18n="certificates.view">Open PDF →</a>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-name">Python</div>
+      <div class="cert-meta">Ministry of Digital Development<br>Russia · 2026 · Python.pdf</div>
+      <a href="certificates/Python.pdf" target="_blank" class="cert-link" data-i18n="certificates.view">Open PDF →</a>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <span>&#169; 2026 Ivan Vorobyov &middot; <a href="https://github.com/humoridze" target="_blank" rel="noopener noreferrer">@humoridze</a></span>
+  <span class="footer-left">© 2026 Ivan Vorobyov</span>
+  <span class="footer-right">
+    <a href="https://github.com/humoridze" target="_blank" rel="noopener noreferrer">@humoridze</a>
+    &middot;
+    <a href="https://codexdev.ru">codexdev.ru</a>
+  </span>
 </footer>
 
 <script src="js/main.js"></script>
