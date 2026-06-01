@@ -10,6 +10,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Unbounded:wght@300;400;700;900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="css/style.css" />
+<script>
+(function () {
+  var manual = localStorage.getItem('themeManual') === '1';
+  var t = localStorage.getItem('theme');
+  if (manual && (t === 'dark' || t === 'light')) {
+    document.documentElement.setAttribute('data-theme', t);
+    return;
+  }
+  var h = new Date().getHours();
+  document.documentElement.setAttribute('data-theme', h >= 7 && h < 19 ? 'light' : 'dark');
+})();
+</script>
 </head>
 <body>
 
@@ -27,6 +39,7 @@
     <li><a href="#certificates" data-i18n="nav.certificates">Certs</a></li>
   </ul>
   <div class="nav-lang">
+    <button class="theme-btn" id="theme-btn" type="button" aria-label="Toggle theme" title="Toggle theme">☾</button>
     <button class="lang-btn active" data-lang="en">EN</button>
     <button class="lang-btn"        data-lang="ru">RU</button>
     <button class="lang-btn"        data-lang="de">DE</button>

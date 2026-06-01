@@ -233,5 +233,40 @@ const observer = new IntersectionObserver(entries => {
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+/* ─── THEME ─── */
+const themeBtn = document.getElementById('theme-btn');
+const THEME_KEY = 'theme';
+const THEME_MANUAL_KEY = 'themeManual';
+
+function getThemeByTime() {
+  const h = new Date().getHours();
+  return h >= 7 && h < 19 ? 'light' : 'dark';
+}
+
+function resolveTheme() {
+  if (localStorage.getItem(THEME_MANUAL_KEY) === '1') {
+    const saved = localStorage.getItem(THEME_KEY);
+    if (saved === 'dark' || saved === 'light') return saved;
+  }
+  return getThemeByTime();
+}
+
+function applyTheme(theme, manual) {
+  document.documentElement.setAttribute('data-theme', theme);
+  if (themeBtn) themeBtn.textContent = theme === 'light' ? '☾' : '☀';
+  if (manual) {
+    localStorage.setItem(THEME_KEY, theme);
+    localStorage.setItem(THEME_MANUAL_KEY, '1');
+  }
+}
+
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme') || resolveTheme();
+  applyTheme(current === 'light' ? 'dark' : 'light', true);
+}
+
+applyTheme(resolveTheme(), false);
+if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
+
 /* ─── INIT ─── */
 applyLang('en');
