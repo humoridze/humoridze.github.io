@@ -1,16 +1,4 @@
-﻿User-agent: *
+User-agent: *
 Allow: /
 
 Sitemap: https://codexdev.ru/sitemap.xml
-
-# AI / LLM crawlers
-User-agent: GPTBot
-Allow: /
-User-agent: ChatGPT-User
-Allow: /
-User-agent: Google-Extended
-Allow: /
-User-agent: anthropic-ai
-Allow: /
-User-agent: ClaudeBot
-Allow: /
