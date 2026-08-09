@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>humoridze — Ivan Vorobyov</title>
+  <meta name="description" content="Иван Воробьёв / humoridze — бэкенд, Laravel, Java, PostgreSQL. Воронеж.">
+  <meta property="og:title" content="humoridze — Ivan Vorobyov">
+  <meta property="og:description" content="Backend, Laravel, Java, PostgreSQL. Voronezh.">
+  <meta property="og:image" content="https://codexdev.ru/images/avatar.png">
+  <meta property="og:url" content="https://codexdev.ru">
+  <link rel="canonical" href="https://codexdev.ru">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="topbar__brand" href="#top">humoridze</a>
+    <nav class="topbar__nav" aria-label="Primary">
+      <a href="#about" data-i18n="nav.about">О себе</a>
+      <a href="#stack" data-i18n="nav.stack">Стек</a>
+      <a href="#work" data-i18n="nav.work">Проекты</a>
+      <a href="#certs" data-i18n="nav.certs">Сертификаты</a>
+    </nav>
+    <div class="topbar__aside">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" class="lang__btn is-active" data-lang="ru" aria-pressed="true">RU</button>
+        <button type="button" class="lang__btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn btn--compact" href="#contact" data-i18n="nav.contactCta">Связаться</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero__copy">
+        <a class="hero__avail" href="#contact" data-reveal>
+          <span class="hero__avail-main" data-i18n="nav.open">Ищу работу</span>
+          <span class="hero__avail-sub" data-i18n="nav.openHint">backend · Laravel · Java</span>
+        </a>
+        <p class="hero__brand" data-reveal>humoridze</p>
+        <h1 class="hero__title" data-i18n="hero.title" data-reveal>Backend-разработчик</h1>
+        <p class="hero__lead" data-i18n="hero.lead" data-reveal>PHP, Java, PostgreSQL, Docker. 4 года опыта. Воронеж.</p>
+        <div class="hero__cta" data-reveal>
+          <a class="btn btn--solid" href="https://t.me/legendagachimuchi" target="_blank" rel="noopener noreferrer" data-i18n="hero.ctaTg">Написать в Telegram</a>
+          <a class="btn btn--ghost" href="mailto:htvoeylife@gmail.com" data-i18n="hero.ctaMail">Почта</a>
+        </div>
+      </div>
+      <div class="hero__media">
+        <img src="images/avatar.png" alt="Ivan Vorobyov" width="1200" height="1500" fetchpriority="high">
+      </div>
+    </section>
+
+    <section class="proof" aria-label="Highlights">
+      <div class="proof__item">
+        <strong>4</strong>
+        <span data-i18n="proof.years">года опыта</span>
+      </div>
+      <div class="proof__item">
+        <strong>Laravel</strong>
+        <span data-i18n="proof.laravel">основной стек</span>
+      </div>
+      <div class="proof__item">
+        <strong>Java</strong>
+        <span data-i18n="proof.java">сервисы и лаунчеры</span>
+      </div>
+      <div class="proof__item">
+        <strong>Voronezh</strong>
+        <span data-i18n="proof.place">удалённо / офис</span>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="about__grid">
+        <div>
+          <p class="eyebrow" data-i18n="about.label">О себе</p>
+          <h2 class="section-title" data-i18n="about.title">Иван Воробьёв</h2>
+        </div>
+        <p class="about__text" data-i18n="about.text">Занимаюсь backend-разработкой: API, базы данных, деплой. Основной стек — PHP/Laravel и Java. Также работаю с PostgreSQL, Docker, Linux и JavaScript. Параллельно прохожу обучение по направлению «Информационные системы» в ВИВТ (2025–2028).</p>
+      </div>
+    </section>
+
+    <section class="stack" id="stack">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="stack.title">Стек</p>
+        <h2 class="section-title" data-i18n="stack.text">Технологии, с которыми работаю.</h2>
+      </div>
+      <ul class="stack__list">
+        <li>PHP / Laravel</li>
+        <li>Java</li>
+        <li>PostgreSQL</li>
+        <li>Docker</li>
+        <li>Linux</li>
+        <li>JavaScript</li>
+      </ul>
+    </section>
+
+    <section class="work" id="work">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="work.title">Проекты</p>
+        <h2 class="section-title" data-i18n="work.text">Некоторые из реализованных проектов.</h2>
+      </div>
+      <ol class="work__list">
+        <li class="work__item">
+          <span class="work__index">01</span>
+          <div class="work__content">
+            <h3 data-i18n="work.p1.title">CS:GO OpenCase</h3>
+            <p data-i18n="work.p1.text">Веб-сервис открытия кейсов: баланс, платежи, выдача предметов через API CSGO.TM, административная панель.</p>
+            <p class="work__tags">Laravel · PostgreSQL · CSGO.TM API</p>
+          </div>
+        </li>
+        <li class="work__item">
+          <span class="work__index">02</span>
+          <div class="work__content">
+            <h3 data-i18n="work.p2.title">Telegram Mini Apps</h3>
+            <p data-i18n="work.p2.text">Мини-приложения в Telegram с авторизацией через WebApp и серверной частью.</p>
+            <p class="work__tags">PHP · JS · Telegram API</p>
+          </div>
+        </li>
+        <li class="work__item">
+          <span class="work__index">03</span>
+          <div class="work__content">
+            <h3 data-i18n="work.p3.title">Minecraft Launcher</h3>
+            <p data-i18n="work.p3.text">Десктопный лаунчер на Java: авторизация, обновления клиента, запуск игры.</p>
+            <p class="work__tags">Java · auth</p>
+          </div>
+        </li>
+        <li class="work__item">
+          <span class="work__index">04</span>
+          <div class="work__content">
+            <h3 data-i18n="work.p4.title">Telegram-боты</h3>
+            <p data-i18n="work.p4.text">Боты на Python и aiogram: меню, платежи, интеграции с API, админ-команды.</p>
+            <p class="work__tags">Python · aiogram · Telegram Bot API</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="certs" id="certs">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="certs.title">Сертификаты</p>
+        <h2 class="section-title" data-i18n="certs.text">Выданы Министерством цифрового развития России</h2>
+      </div>
+      <ul class="certs__list">
+        <li><a href="/certificates/api.pdf">API<span>PDF</span></a></li>
+        <li><a href="/certificates/docker.pdf">Docker<span>PDF</span></a></li>
+        <li><a href="/certificates/git.pdf">Git<span>PDF</span></a></li>
+        <li><a href="/certificates/linux.pdf">Linux<span>PDF</span></a></li>
+        <li><a href="/certificates/postgres.pdf">PostgreSQL<span>PDF</span></a></li>
+        <li><a href="/certificates/python.pdf">Python<span>PDF</span></a></li>
+      </ul>
+    </section>
+
+    <section class="education" id="education">
+      <p class="eyebrow" data-i18n="edu.label">Обучение</p>
+      <h2 class="section-title" data-i18n="edu.title">Воронежский институт высоких технологий</h2>
+      <p class="education__text" data-i18n="edu.text">Информационные системы, 2025–2028.</p>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="contact__panel">
+        <p class="contact__eyebrow" data-i18n="contact.eyebrow">Контакты</p>
+        <h2 class="contact__title" data-i18n="contact.title">Открыт к предложениям о работе</h2>
+        <p class="contact__text" data-i18n="contact.text">Пишите в Telegram или на почту.</p>
+        <div class="contact__actions">
+          <a class="btn btn--light" href="https://t.me/legendagachimuchi" target="_blank" rel="noopener noreferrer">Telegram</a>
+          <a class="btn btn--outline-light" href="mailto:htvoeylife@gmail.com">htvoeylife@gmail.com</a>
+          <a class="btn btn--outline-light" href="https://github.com/humoridze" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© <span id="year"></span> humoridze</span>
+    <span data-i18n="footer.name">Иван Воробьёв</span>
+    <span data-i18n="footer.place">Россия, Воронеж</span>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
