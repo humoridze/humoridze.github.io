@@ -1,0 +1,33 @@
+# humoridze
+
+> Ivan Vorobyov (humoridze) — backend developer from Voronezh, Russia.
+
+## Site
+- https://codexdev.ru/
+- https://codexdev.ru/en/
+
+## Contact
+- Email: htvoeylife@gmail.com
+- Telegram: https://t.me/legendagachimuchi
+- GitHub: https://github.com/humoridze
+
+## Stack
+PHP, Laravel, Java, PostgreSQL, Docker, Linux, JavaScript, Python, REST API, Redis, Git
+
+## Projects
+- CS:GO OpenCase — payments, inventory, CSGO.TM API delivery
+- Telegram Mini Apps — WebApp auth and backend
+- Minecraft Launcher — Java desktop launcher
+- Telegram bots — Python, aiogram
+
+## Education
+Voronezh Institute of High Technologies, Information Systems, 2025–2028
+
+## Certificates
+Issued by the Ministry of Digital Development of Russia:
+- https://codexdev.ru/certificates/api.pdf
+- https://codexdev.ru/certificates/docker.pdf
+- https://codexdev.ru/certificates/git.pdf
+- https://codexdev.ru/certificates/linux.pdf
+- https://codexdev.ru/certificates/postgres.pdf
+- https://codexdev.ru/certificates/python.pdf

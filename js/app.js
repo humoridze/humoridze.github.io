@@ -3,19 +3,17 @@ if (yearNode) {
   yearNode.textContent = String(new Date().getFullYear());
 }
 
-const queryLang = new URLSearchParams(window.location.search).get("lang");
-const savedLang = localStorage.getItem("humoridze-lang");
-const startLang =
-  queryLang === "en" || queryLang === "ru"
-    ? queryLang
-    : savedLang === "en" || savedLang === "ru"
-      ? savedLang
-      : "ru";
-window.HumorI18n.applyLanguage(startLang);
+const pathLang = window.location.pathname.startsWith("/en") ? "en" : "ru";
+window.HumorI18n.applyLanguage(pathLang);
 
 document.querySelectorAll(".lang__btn").forEach((btn) => {
   btn.addEventListener("click", () => {
-    window.HumorI18n.applyLanguage(btn.dataset.lang);
+    const nextLang = btn.dataset.lang;
+    if (nextLang === "en") {
+      window.location.href = "/en/" + window.location.hash;
+      return;
+    }
+    window.location.href = "/" + window.location.hash;
   });
 });
 

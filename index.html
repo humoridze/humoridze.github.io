@@ -12,32 +12,40 @@
   <meta name="geo.placename" content="Voronezh">
   <link rel="canonical" href="https://codexdev.ru/">
   <link rel="alternate" hreflang="ru" href="https://codexdev.ru/">
-  <link rel="alternate" hreflang="en" href="https://codexdev.ru/?lang=en">
+  <link rel="alternate" hreflang="en" href="https://codexdev.ru/en/">
   <link rel="alternate" hreflang="x-default" href="https://codexdev.ru/">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="profile">
   <meta property="og:site_name" content="humoridze">
   <meta property="og:locale" content="ru_RU">
   <meta property="og:locale:alternate" content="en_US">
   <meta property="og:title" content="humoridze — Иван Воробьёв | Backend-разработчик">
   <meta property="og:description" content="Backend-разработчик: PHP, Laravel, Java, PostgreSQL, Docker, REST API. Воронеж. Открыт к работе.">
   <meta property="og:url" content="https://codexdev.ru/">
-  <meta property="og:image" content="https://codexdev.ru/images/avatar.png">
-  <meta property="og:image:type" content="image/png">
-  <meta property="og:image:alt" content="Иван Воробьёв — humoridze">
+  <meta property="og:image" content="https://codexdev.ru/images/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:alt" content="humoridze — Иван Воробьёв, backend developer">
+  <meta property="profile:first_name" content="Ivan">
+  <meta property="profile:last_name" content="Vorobyov">
+  <meta property="profile:username" content="humoridze">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="humoridze — Иван Воробьёв | Backend-разработчик">
   <meta name="twitter:description" content="Backend-разработчик: PHP, Laravel, Java, PostgreSQL, Docker, REST API. Воронеж.">
-  <meta name="twitter:image" content="https://codexdev.ru/images/avatar.png">
-  <link rel="icon" href="favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="twitter:image" content="https://codexdev.ru/images/og.jpg">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="author" type="text/plain" href="/humans.txt">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="sitemap" type="application/xml" href="/sitemap.xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="image" href="images/avatar.png" fetchpriority="high">
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  <link rel="preload" as="image" href="/images/avatar-hero.jpg" fetchpriority="high" type="image/jpeg">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="/css/styles.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -51,6 +59,21 @@
         "publisher": { "@id": "https://codexdev.ru/#person" }
       },
       {
+        "@type": "ProfilePage",
+        "@id": "https://codexdev.ru/#webpage",
+        "url": "https://codexdev.ru/",
+        "name": "humoridze — Иван Воробьёв | Backend-разработчик",
+        "inLanguage": "ru",
+        "isPartOf": { "@id": "https://codexdev.ru/#website" },
+        "about": { "@id": "https://codexdev.ru/#person" },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://codexdev.ru/images/og.jpg",
+          "width": 1200,
+          "height": 630
+        }
+      },
+      {
         "@type": "Person",
         "@id": "https://codexdev.ru/#person",
         "name": "Иван Воробьёв",
@@ -58,7 +81,7 @@
         "url": "https://codexdev.ru/",
         "image": "https://codexdev.ru/images/avatar.png",
         "jobTitle": "Backend developer",
-        "description": "Backend-разработчик: PHP, Laravel, Java, PostgreSQL, Docker, REST API.",
+        "description": "Backend-разработчик: PHP, Laravel, Java, PostgreSQL, Docker, REST API, Redis.",
         "email": "mailto:htvoeylife@gmail.com",
         "address": {
           "@type": "PostalAddress",
@@ -66,17 +89,35 @@
           "addressCountry": "RU"
         },
         "alumniOf": {
-          "@type": "EducationalOrganization",
+          "@type": "CollegeOrUniversity",
           "name": "Воронежский институт высоких технологий"
         },
-        "knowsAbout": [
-          "PHP", "Laravel", "Java", "PostgreSQL", "Docker", "Linux",
-          "JavaScript", "Python", "REST API", "Redis", "Git", "Telegram bots"
-        ],
+        "knowsAbout": ["PHP", "Laravel", "Java", "PostgreSQL", "Docker", "Linux", "JavaScript", "Python", "REST API", "Redis", "Git", "Telegram bots"],
+        "knowsLanguage": ["ru", "en"],
         "sameAs": [
           "https://github.com/humoridze",
           "https://t.me/legendagachimuchi",
           "https://codexdev.ru/"
+        ],
+        "hasCredential": [
+          {"@type": "EducationalOccupationalCredential", "name": "API", "url": "https://codexdev.ru/certificates/api.pdf", "credentialCategory": "certificate", "recognizedBy": {"@type": "Organization", "name": "Министерство цифрового развития России"}},
+          {"@type": "EducationalOccupationalCredential", "name": "Docker", "url": "https://codexdev.ru/certificates/docker.pdf", "credentialCategory": "certificate", "recognizedBy": {"@type": "Organization", "name": "Министерство цифрового развития России"}},
+          {"@type": "EducationalOccupationalCredential", "name": "Git", "url": "https://codexdev.ru/certificates/git.pdf", "credentialCategory": "certificate", "recognizedBy": {"@type": "Organization", "name": "Министерство цифрового развития России"}},
+          {"@type": "EducationalOccupationalCredential", "name": "Linux", "url": "https://codexdev.ru/certificates/linux.pdf", "credentialCategory": "certificate", "recognizedBy": {"@type": "Organization", "name": "Министерство цифрового развития России"}},
+          {"@type": "EducationalOccupationalCredential", "name": "PostgreSQL", "url": "https://codexdev.ru/certificates/postgres.pdf", "credentialCategory": "certificate", "recognizedBy": {"@type": "Organization", "name": "Министерство цифрового развития России"}},
+          {"@type": "EducationalOccupationalCredential", "name": "Python", "url": "https://codexdev.ru/certificates/python.pdf", "credentialCategory": "certificate", "recognizedBy": {"@type": "Organization", "name": "Министерство цифрового развития России"}}
+        ]
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://codexdev.ru/#projects",
+        "name": "Проекты",
+        "numberOfItems": 4,
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "CS:GO OpenCase", "description": "Веб-сервис открытия кейсов с платежами и выдачей через API CSGO.TM."},
+          {"@type": "ListItem", "position": 2, "name": "Telegram Mini Apps", "description": "Мини-приложения в Telegram с авторизацией WebApp и серверной частью."},
+          {"@type": "ListItem", "position": 3, "name": "Minecraft Launcher", "description": "Лаунчер на Java: авторизация, обновления клиента, запуск игры."},
+          {"@type": "ListItem", "position": 4, "name": "Telegram-боты", "description": "Боты на Python и aiogram: меню, платежи, интеграции с API."}
         ]
       }
     ]
@@ -119,7 +160,10 @@
         </div>
       </div>
       <div class="hero__media">
-        <img src="images/avatar.png" alt="Иван Воробьёв — backend-разработчик humoridze" width="1200" height="1500" fetchpriority="high" decoding="async">
+        <picture>
+          <source srcset="/images/avatar-hero.jpg" type="image/jpeg" width="900" height="1125">
+          <img src="/images/avatar.png" alt="Иван Воробьёв — backend-разработчик humoridze" width="900" height="1125" fetchpriority="high" decoding="async">
+        </picture>
       </div>
     </section>
 
@@ -252,9 +296,9 @@
     <span data-i18n="footer.place">Россия, Воронеж</span>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
-  <script src="js/i18n.js"></script>
-  <script src="js/app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
+  <script src="/js/i18n.js" defer></script>
+  <script src="/js/app.js" defer></script>
 </body>
 </html>

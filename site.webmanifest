@@ -1,0 +1,23 @@
+{
+  "name": "humoridze — Иван Воробьёв",
+  "short_name": "humoridze",
+  "description": "Backend-разработчик: PHP, Laravel, Java, PostgreSQL, Docker.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f3f5f8",
+  "theme_color": "#10131a",
+  "lang": "ru",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ]
+}

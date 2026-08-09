@@ -1,0 +1,10 @@
+/* TEAM */
+Developer: Ivan Vorobyov
+Site: https://codexdev.ru
+Telegram: https://t.me/legendagachimuchi
+GitHub: https://github.com/humoridze
+Location: Voronezh, Russia
+
+/* SITE */
+Language: ru, en
+Standards: HTML5, CSS3, Schema.org

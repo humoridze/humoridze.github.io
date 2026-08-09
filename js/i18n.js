@@ -129,14 +129,6 @@ function applyLanguage(lang) {
   setMeta("og:locale", lang === "en" ? "en_US" : "ru_RU", "property");
 
   localStorage.setItem("humoridze-lang", lang);
-
-  const url = new URL(window.location.href);
-  if (lang === "en") {
-    url.searchParams.set("lang", "en");
-  } else {
-    url.searchParams.delete("lang");
-  }
-  window.history.replaceState({}, "", url.pathname + url.search + url.hash);
 }
 
 window.HumorI18n = { translations, applyLanguage };
