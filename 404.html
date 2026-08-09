@@ -4,41 +4,118 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 — humoridze</title>
+  <meta name="description" content="Страница не найдена.">
   <meta name="robots" content="noindex, follow">
   <meta name="theme-color" content="#10131a">
   <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
   <style>
     .miss {
       min-height: 100svh;
       display: grid;
-      place-content: center;
-      gap: 1rem;
-      padding: var(--pad);
-      text-align: center;
+      align-content: center;
+      justify-items: start;
+      gap: 0;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: calc(5rem + var(--pad)) var(--pad) var(--pad);
     }
-    .miss h1 {
-      margin: 0;
+
+    .miss__code {
+      margin: 0 0 1rem;
       font-family: var(--font-display);
-      font-size: clamp(4rem, 12vw, 7rem);
-      letter-spacing: -0.06em;
-      line-height: 0.9;
+      font-size: clamp(5.5rem, 16vw, 9rem);
+      font-weight: 800;
+      line-height: 0.85;
+      letter-spacing: -0.07em;
+      color: var(--signal);
     }
-    .miss p {
-      margin: 0;
+
+    .miss__brand {
+      margin: 0 0 0.85rem;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .miss__title {
+      margin: 0 0 0.75rem;
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+    }
+
+    .miss__text {
+      margin: 0 0 1.8rem;
+      max-width: 34ch;
       color: var(--ink-soft);
       font-weight: 500;
+    }
+
+    .miss__cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .miss__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem 1.4rem;
+      padding-top: 1.4rem;
+      border-top: 1px solid var(--line);
+      width: 100%;
+    }
+
+    .miss__links a {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--ink-soft);
+      border-bottom: 1px solid transparent;
+      padding-bottom: 0.1rem;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .miss__links a:hover {
+      color: var(--signal);
+      border-bottom-color: var(--signal);
     }
   </style>
 </head>
 <body>
-  <main class="miss">
-    <h1>404</h1>
-    <p>Страница не найдена</p>
-    <div class="hero__cta" style="justify-content: center; margin-top: 0.5rem;">
-      <a class="btn btn--solid" href="/">На главную</a>
-      <a class="btn btn--ghost" href="/en/">English</a>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="topbar__brand" href="/">humoridze</a>
+    <div class="topbar__aside">
+      <a class="btn btn--compact" href="/#contact">Связаться</a>
     </div>
+  </header>
+
+  <main class="miss">
+    <p class="miss__code">404</p>
+    <p class="miss__brand">humoridze</p>
+    <h1 class="miss__title">Такой страницы нет</h1>
+    <p class="miss__text">Ссылка устарела или адрес набран с ошибкой. Можно вернуться на главную или сразу написать.</p>
+    <div class="miss__cta">
+      <a class="btn btn--solid" href="/">На главную</a>
+      <a class="btn btn--ghost" href="https://t.me/legendagachimuchi" target="_blank" rel="noopener noreferrer">Telegram</a>
+    </div>
+    <nav class="miss__links" aria-label="Быстрые ссылки">
+      <a href="/#about">О себе</a>
+      <a href="/#stack">Стек</a>
+      <a href="/#work">Проекты</a>
+      <a href="/#certs">Сертификаты</a>
+      <a href="/en/">English</a>
+    </nav>
   </main>
 </body>
 </html>
