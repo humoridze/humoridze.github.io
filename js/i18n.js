@@ -40,6 +40,8 @@ const translations = {
     "contact.text": "Пишите в Telegram или на почту.",
     "footer.name": "Иван Воробьёв",
     "footer.place": "Россия, Воронеж",
+    "meta.title": "humoridze — Иван Воробьёв | Backend-разработчик",
+    "meta.description": "Иван Воробьёв (humoridze) — backend-разработчик из Воронежа. PHP, Laravel, Java, PostgreSQL, Docker, REST API. 4 года опыта. Открыт к предложениям о работе.",
   },
   en: {
     "nav.about": "About",
@@ -82,8 +84,20 @@ const translations = {
     "contact.text": "Reach me on Telegram or by email.",
     "footer.name": "Ivan Vorobyov",
     "footer.place": "Russia, Voronezh",
+    "meta.title": "humoridze — Ivan Vorobyov | Backend developer",
+    "meta.description": "Ivan Vorobyov (humoridze) — backend developer from Voronezh. PHP, Laravel, Java, PostgreSQL, Docker, REST API. 4 years of experience. Open to work.",
   },
 };
+
+function setMeta(name, content, attr = "name") {
+  let node = document.querySelector(`meta[${attr}="${name}"]`);
+  if (!node) {
+    node = document.createElement("meta");
+    node.setAttribute(attr, name);
+    document.head.appendChild(node);
+  }
+  node.setAttribute("content", content);
+}
 
 function applyLanguage(lang) {
   const pack = translations[lang] || translations.ru;
@@ -102,7 +116,27 @@ function applyLanguage(lang) {
     btn.setAttribute("aria-pressed", String(active));
   });
 
+  if (pack["meta.title"]) {
+    document.title = pack["meta.title"];
+    setMeta("og:title", pack["meta.title"], "property");
+    setMeta("twitter:title", pack["meta.title"]);
+  }
+  if (pack["meta.description"]) {
+    setMeta("description", pack["meta.description"]);
+    setMeta("og:description", pack["meta.description"], "property");
+    setMeta("twitter:description", pack["meta.description"]);
+  }
+  setMeta("og:locale", lang === "en" ? "en_US" : "ru_RU", "property");
+
   localStorage.setItem("humoridze-lang", lang);
+
+  const url = new URL(window.location.href);
+  if (lang === "en") {
+    url.searchParams.set("lang", "en");
+  } else {
+    url.searchParams.delete("lang");
+  }
+  window.history.replaceState({}, "", url.pathname + url.search + url.hash);
 }
 
 window.HumorI18n = { translations, applyLanguage };

@@ -3,8 +3,14 @@ if (yearNode) {
   yearNode.textContent = String(new Date().getFullYear());
 }
 
+const queryLang = new URLSearchParams(window.location.search).get("lang");
 const savedLang = localStorage.getItem("humoridze-lang");
-const startLang = savedLang === "en" || savedLang === "ru" ? savedLang : "ru";
+const startLang =
+  queryLang === "en" || queryLang === "ru"
+    ? queryLang
+    : savedLang === "en" || savedLang === "ru"
+      ? savedLang
+      : "ru";
 window.HumorI18n.applyLanguage(startLang);
 
 document.querySelectorAll(".lang__btn").forEach((btn) => {
